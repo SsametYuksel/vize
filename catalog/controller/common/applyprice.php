@@ -27,10 +27,13 @@ class ControllerCommonApplyprice extends Controller {
 		$data['nationalities'] = array_map(function($item){
 			$prices = $this->model_catalog_product->getProductOptions($item['product_id'])[0]['prices'];
 			$prices = array_filter($prices, function($item){
-				return $item['name'] == 'Apply Standard';
+				return $item['option_value_id'] == $_GET['type'];
 			});
+			$prices = array_values($prices);
+			if(count($prices)){
+				$item['price'] = $this->currency->format($prices[0]['price']);
+			}
 
-			$item['price'] = $this->currency->format($prices[0]['price']);
 			return $item;
 
 		}, $data['nationalities']);

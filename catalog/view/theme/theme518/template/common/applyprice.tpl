@@ -54,7 +54,7 @@
 			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px; background-color: #f7f7f7">
 				<p>Nationality: <span id="nationality-confirm" style="font-weight: 600; color: black"> </span></p>
 				<p>Passport Type: <span style="font-weight: 600; color: black" id="passport-confirm"> </span></p>
-				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"> 20$</span></h2>
+				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"></span></h2>
 
 			</div>
 
