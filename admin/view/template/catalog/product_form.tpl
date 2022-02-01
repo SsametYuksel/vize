@@ -57,45 +57,48 @@
                       <?php } ?>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
-                    <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
+                  <div style="display: none">
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
+                          <div class="col-sm-10">
+                            <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group required">
+                          <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
+                          <div class="col-sm-10">
+                            <input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
+                            <?php if (isset($error_meta_title[$language['language_id']])) { ?>
+                            <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
+                            <?php } ?>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
+                          <div class="col-sm-10">
+                            <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_description]" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-meta-keyword<?php echo $language['language_id']; ?>"><?php echo $entry_meta_keyword; ?></label>
+                          <div class="col-sm-10">
+                            <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
+                          </div>
                     </div>
-                  </div>
-                  <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
-                    <div class="col-sm-10">
-                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
-                      <?php if (isset($error_meta_title[$language['language_id']])) { ?>
-                      <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
-                      <?php } ?>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
-                    <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_description]" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-meta-keyword<?php echo $language['language_id']; ?>"><?php echo $entry_meta_keyword; ?></label>
-                    <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
-                    </div>
-                  </div>
+                  
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="<?php echo $help_tag; ?>"><?php echo $entry_tag; ?></span></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
+                  </div>
                 </div>
                 <?php } ?>
               </div>
             </div>
             <div class="tab-pane" id="tab-data">
-              <div class="form-group">
+              <div class="form-group" style="display: none">
                 <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
                 <div class="col-sm-10">
                   <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
@@ -124,7 +127,7 @@
                 </div>
               </div>
 
-                <div class="form-group">
+                <div class="form-group required">
                 <label class="col-sm-2 control-label">Need Supporting Docs</label>
                 <div class="col-sm-10">
                   <label class="radio-inline">
@@ -149,20 +152,20 @@
               </div>
 
 
-              <div class="form-group">
+              <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-max_stay_days">Max Stay Days</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="max_stay_days" value="<?php echo $max_stay_days; ?>" placeholder="<?php echo $entry_model; ?>" id="input-max_stay_days" class="form-control" />
+                  <input type="text" name="max_stay_days" value="<?php echo $max_stay_days; ?>"  id="input-max_stay_days" class="form-control" />
                   <?php if ($error_model) { ?>
                   <div class="text-danger"><?php echo $error_model; ?></div>
                   <?php } ?>
                 </div>
               </div>
 
-              <div class="form-group required">
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-extra_passport_note">Extra Passport Note</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="extra_passport_note" value="<?php echo $extra_passport_note; ?>" placeholder="<?php echo $entry_model; ?>" id="input-extra_passport_note" class="form-control" />
+                  <input type="text" name="extra_passport_note" value="<?php echo $extra_passport_note; ?>"  id="input-extra_passport_note" class="form-control" />
                   <?php if ($error_model) { ?>
                   <div class="text-danger"><?php echo $error_model; ?></div>
                   <?php } ?>
@@ -655,18 +658,7 @@
                                   <option value="0" selected="selected"><?php echo $text_no; ?></option>
                                   <?php } ?>
                                 </select></td> -->
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
-                                  <?php if ($product_option_value['price_prefix'] == '+') { ?>
-                                  <option value="+" selected="selected">+</option>
-                                  <?php } else { ?>
-                                  <option value="+">+</option>
-                                  <?php } ?>
-                                  <?php if ($product_option_value['price_prefix'] == '-') { ?>
-                                  <option value="-" selected="selected">-</option>
-                                  <?php } else { ?>
-                                  <option value="-">-</option>
-                                  <?php } ?>
-                                </select>
+                              <td class="text-right">
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
                               <!-- <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
                                   <?php if ($product_option_value['points_prefix'] == '+') { ?>
@@ -1319,10 +1311,7 @@ function addOptionValue(option_row) {
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
 	html += $('#option-values' + option_row).html();
 	html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
-	html += '    <option value="+">+</option>';
-	html += '    <option value="-">-</option>';
-	html += '  </select>';
+	html += '  <td class="text-right">';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(this).tooltip(\'destroy\');$(\'#option-value-row' + option_value_row + '\').remove();" data-toggle="tooltip" rel="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
