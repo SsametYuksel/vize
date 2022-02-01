@@ -18,25 +18,12 @@
 		<div class="row">
 			<div class="col col-md-6">
 				
-				<div class="form-group" style="max-width: 300px; margin: auto">
-				  <label for="">Number of Entry</label>
-				  <input required type="text"
-					class="form-control" name="number_of_entries" id="" aria-describedby="helpId">
-				</div>
-				<br>
-				
-				<div class="form-group" style="max-width: 300px;  margin: auto">
-				  <label for="">Duration of Stay</label>
-				  <input required type="text"
-					class="form-control" name="stay_duration" id="" aria-describedby="helpId">
-				</div>
-				<br>
 
-				<div class="form-group" style="max-width: 300px;  margin: auto">
+				<div class="form-group" style="max-width: 300px;  margin: auto; position: relative">
 					<label for="">Nationality</label>
 					<select id="nationality" class="form-control" name="nationality_id" id="">
 						<?php foreach($nationalities as $nationality) {
-							echo '<option value='.$nationality['product_id'].'>'.$nationality['name'].'</option>';
+							echo '<option data-price="'.$nationality['price'].'" value='.$nationality['product_id'].'>'.$nationality['name'].'</option>';
 						}?>
 					</select>
 				</div>			
@@ -44,7 +31,8 @@
 
 				<div class="form-group" style="max-width: 300px;  margin: auto">
 					<label for="">Passport Type</label>
-					<select required id="passport" class="form-control" name="passport_id" id="">
+					<select required class="form-control" name="passport_id" id="">
+						<option>Ordinary</option>
 					</select>
 				</div>		
 				<br>
@@ -63,10 +51,10 @@
 
 			</div>
 
-			<div class="col col-md-6 text-center" style="vertical-align: center; padding-top: 50px">
+			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px; background-color: #f7f7f7">
 				<p>Nationality: <span id="nationality-confirm" style="font-weight: 600; color: black"> </span></p>
 				<p>Passport Type: <span style="font-weight: 600; color: black" id="passport-confirm"> </span></p>
-				<h2 style="font-size: 40px; margin-top: 20px">Visa Fee:<span id="price" style="color: green; font-weight: 600"> 20$</span></h2>
+				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"> 20$</span></h2>
 
 			</div>
 
@@ -99,58 +87,58 @@
 .picker-switch{
 	display: none;
 }
+
+#price {
+	opacity: 1;
+	position: absolute;
+	top: 10px
+	transform: translateY(-10px);
+	transition: all 0.5s;
+}
+
+#price.active {
+	position: absolute;
+	transform: translateY(-10px);
+	opacity: 0;
+	transition: all 0.5s;
+}
+
 </style>
 <div class="content_bottom">
 			<?php echo $content_bottom; ?>
 </div>
 <script>
-var fillPassports = product_id => {
-    $.ajax({
-        url: 'index.php?route=common/applyform/getPassports',
-		data: {
-			product_id: product_id
-		},
-        success: function(res) {
-			$('#passport').empty()
-			console.log(res)
-			res.forEach(function(item){
-				 $('#passport').append($('<option>', { 
-					price: item.price,
-					value: item.product_option_value_id,
-					text : item.name
-				}));
-				initializePassportConfirm()
-				initializePrice()
-			})
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-            console.log(thrownError)
-        }
-    });
-}
 
-var updatePassportWhenCountrySelect = () => {
+
+var updatePriceWhenNationalitySelect = () => {
 	$('#nationality').on('change', function() {
-  		product_id = $(this).val()
-		country = $('option:selected', this).text()
-		$('#nationality-confirm').text(country)
-		fillPassports(product_id)
-	});
-}
+		$('#price').toggleClass('active')
 
-var updatePriceWhenPassportSelect = () => {
-	$('#passport').on('change', function() {
-  		price = $('option:selected', '#passport').attr('price')
-		$('#price').text(price)
-		passport = $('option:selected', this).text()
-		$('#passport-confirm').text(passport)
+		setTimeout(function() {
+			country = $('option:selected', '#nationality').text()
+			price = $('option:selected', '#nationality').data('price')
+			$('#price').text(' ' + price)
+			$('#price').toggleClass('active')
+			$('#nationality-confirm').text(country)
+			$('#passport-confirm').text('Ordinary')
+		}, 400);
+
 	});
 }
 
 var initializeNationalityConfirm = () => {
 
-	country = $('option:selected', '#nationality').text()
-	$('#nationality-confirm').text(country)
+	$('#price').toggleClass('active')
+
+	setTimeout(function() {
+		country = $('option:selected', '#nationality').text()
+		price = $('option:selected', '#nationality').data('price')
+		$('#price').text(' ' + price)
+		$('#price').toggleClass('active')
+		$('#nationality-confirm').text(country)
+		$('#passport-confirm').text('Ordinary')
+	}, 400);
+
 }
 
 var initializePassportConfirm = () => {
@@ -171,13 +159,11 @@ var findSelectedNationality = () => {
 
 $(document).ready(function() {
 	initializeNationalityConfirm()
-	product_id = findSelectedNationality()
-    fillPassports(product_id)
-	updatePassportWhenCountrySelect()
-	updatePriceWhenPassportSelect()
+	updatePriceWhenNationalitySelect()
 
 	$('#datetimepicker1').datetimepicker({
 		format: "L",
+		minDate: new Date(),
 	})
 });   
 </script>

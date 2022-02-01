@@ -21,10 +21,7 @@ class ControllerCommonApplyform extends Controller {
 
 		// Load Product model
 		$this->load->model('catalog/product');
-
-		$data['nationalities'] = $this->model_catalog_product->getProducts(array(
-			'filter_category_id' => '39'
-		));
+		$data['nationalities'] = $this->model_catalog_product->getProducts();
 
 		$data['passports'] = $this->model_catalog_product->getProductOptions(56)[0]['product_option_value'];
 		

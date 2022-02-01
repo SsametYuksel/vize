@@ -22,25 +22,22 @@ class ControllerCommonApplyprice extends Controller {
 		// Load Product model
 		$this->load->model('catalog/product');
 
-		$apply_type = $this->request->get['type'];
-		switch ($apply_type) {
-			case 'standard':
-				$category_id = '39';
-				break;
+		$data['nationalities'] = $this->model_catalog_product->getProducts();
 
-			case 'easy':
-				$category_id = '40';
-				break;
-		}
-		$data['nationalities'] = $this->model_catalog_product->getProducts(array(
-			'filter_category_id' => $category_id
-		));
+		$data['nationalities'] = array_map(function($item){
+			$prices = $this->model_catalog_product->getProductOptions($item['product_id'])[0]['prices'];
+			$prices = array_filter($prices, function($item){
+				return $item['name'] == 'Apply Standard';
+			});
 
-		
+			$item['price'] = $this->currency->format($prices[0]['price']);
+			return $item;
+
+		}, $data['nationalities']);
+
 		$data['applyform_url'] = $this->url->link('common/applyform');
 		
-
-		// print_r($data['nationalities']); exit;
+		// print_r($data['nationalities'][60]['prices']); exit;
 		// print_r($data['passports'][0]); exit;
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/applyprice.tpl')) {
