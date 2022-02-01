@@ -110,7 +110,7 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/product/edit', 'product_id='.$this->request->get['product_id'].'&token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
@@ -780,6 +780,38 @@ class ControllerCatalogProduct extends Controller {
 			$data['sku'] = '';
 		}
 
+		if (isset($this->request->post['passport_type_allowance'])) {
+			$data['passport_type_allowance'] = $this->request->post['passport_type_allowance'];
+		} elseif (!empty($product_info)) {
+			$data['passport_type_allowance'] = $product_info['passport_type_allowance'];
+		} else {
+			$data['passport_type_allowance'] = '';
+		}
+
+		if (isset($this->request->post['need_supporting_docs'])) {
+			$data['need_supporting_docs'] = $this->request->post['need_supporting_docs'];
+		} elseif (!empty($product_info)) {
+			$data['need_supporting_docs'] = $product_info['need_supporting_docs'];
+		} else {
+			$data['need_supporting_docs'] = '';
+		}
+
+		if (isset($this->request->post['max_stay_days'])) {
+			$data['max_stay_days'] = $this->request->post['max_stay_days'];
+		} elseif (!empty($product_info)) {
+			$data['max_stay_days'] = $product_info['max_stay_days'];
+		} else {
+			$data['max_stay_days'] = '';
+		}
+
+		if (isset($this->request->post['extra_passport_note'])) {
+			$data['extra_passport_note'] = $this->request->post['extra_passport_note'];
+		} elseif (!empty($product_info)) {
+			$data['extra_passport_note'] = $product_info['extra_passport_note'];
+		} else {
+			$data['extra_passport_note'] = '';
+		}
+
 		if (isset($this->request->post['upc'])) {
 			$data['upc'] = $this->request->post['upc'];
 		} elseif (!empty($product_info)) {
@@ -1325,19 +1357,19 @@ class ControllerCatalogProduct extends Controller {
 			$this->error['model'] = $this->language->get('error_model');
 		}
 		
-		if (utf8_strlen($this->request->post['keyword']) > 0) {
-			$this->load->model('catalog/url_alias');
+		// if (utf8_strlen($this->request->post['keyword']) > 0) {
+		// 	$this->load->model('catalog/url_alias');
 
-			$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
+		// 	$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
 
-			if ($url_alias_info && isset($this->request->get['product_id']) && $url_alias_info['query'] != 'product_id=' . $this->request->get['product_id']) {
-				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-			}
+		// 	if ($url_alias_info && isset($this->request->get['product_id']) && $url_alias_info['query'] != 'product_id=' . $this->request->get['product_id']) {
+		// 		$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+		// 	}
 
-			if ($url_alias_info && !isset($this->request->get['product_id'])) {
-				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-			}
-		}
+		// 	if ($url_alias_info && !isset($this->request->get['product_id'])) {
+		// 		$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+		// 	}
+		// }
 
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
