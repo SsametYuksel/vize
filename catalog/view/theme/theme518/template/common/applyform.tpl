@@ -35,7 +35,7 @@
 				<div class="form-group row">
 					<label for="name" class="col-sm-5 col-form-label">Name</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" name="name">
+						<input type="text" class="form-control" name="name" required>
 					</div>
 				</div>
 
@@ -43,7 +43,7 @@
 				<div class="form-group row">
 					<label for="surname" class="col-sm-5 col-form-label">Surname</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" name="surname">
+						<input type="text" class="form-control" name="surname" required>
 					</div>
 				</div>
 
@@ -53,7 +53,7 @@
 					<div class="col-sm-7">
 						<div class="form-group">
 							<div class='input-group date datetime'>
-								<input type='text' name="birthdate" class="form-control" />
+								<input type='text' name="birthdate" class="form-control" required />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -66,7 +66,7 @@
 				<div class="form-group row">
 					<label for="birthplace" class="col-sm-5 col-form-label">Birth Place</label>
 					<div class="col-sm-7">
-						<input name="birthplace" type="text" class="countryselect form-control">
+						<input name="birthplace" type="text" class="form-control" required>
 					</div>
 				</div>
 
@@ -74,42 +74,17 @@
 				<div class="form-group row">
 					<label for="passport" class="col-sm-5 col-form-label">Passport</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" name="passport">
+						<input type="text" class="form-control" name="passport" required>
 					</div>
 				</div>
 
-				<!-- Email -->
-				<div class="form-group row">
-					<label for="email" class="col-sm-5 col-form-label">Email</label>
-					<div class="col-sm-7">
-						<input type="email" class="form-control" name="email">
-					</div>
-				</div>
-
-				
-				<!-- Phone -->
-				<div class="form-group row">
-					<label for="phone" class="col-sm-5 col-form-label">Phone</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" name="phone">
-					</div>
-				</div>
-				
-				<!-- Residence address -->
-				<div class="form-group row">
-					<label for="residence_address" class="col-sm-5 col-form-label">Residence Address</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" name="residence_address">
-					</div>
-				</div>
-				
-				<!-- Passport issue date -->
+							<!-- Passport issue date -->
 				<div class="form-group row">
 					<label for="passport_issue_date" class="col-sm-5 col-form-label">Passport Issue Date</label>
 					<div class="col-sm-7">
 						<div class="form-group">
 							<div class='input-group date datetime'>
-								<input type='text' name="passport_issue_date" class="form-control" />
+								<input type='text' name="passport_issue_date" class="form-control" required />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -124,7 +99,7 @@
 					<div class="col-sm-7">
 						<div class="form-group">
 							<div class='input-group date datetime'>
-								<input type='text' name="passport_expiry_date" class="form-control" />
+								<input type='text' name="passport_expiry_date" class="form-control" required />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -132,6 +107,8 @@
 						</div>
 					</div>
 				</div>
+
+				
 				
 				<!-- Supporting document type -->
 				<div class="form-group row">
@@ -145,7 +122,7 @@
 				<div class="form-group row">
 					<label for="supporting_document" class="col-sm-5 col-form-label">Supporting Document</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" name="supporting_document">
+						<input type="text" class="form-control" name="supporting_document" required>
 					</div>
 				</div>
 			
@@ -154,7 +131,7 @@
 				<div class="form-group row">
 					<label for="supporting_document_number" class="col-sm-5 col-form-label">Supporting Document Number</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" name="supporting_document_number">
+						<input type="text" class="form-control" name="supporting_document_number" required>
 					</div>
 				</div>
 				
@@ -164,7 +141,7 @@
 					<div class="col-sm-7">
 						<div class="form-group">
 							<div class='input-group date datetime'>
-								<input type='text' name="supporting_document_expiry_date" class="form-control" />
+								<input type='text' name="supporting_document_expiry_date" class="form-control" required />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -172,6 +149,41 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Email -->
+				<div class="form-group row">
+					<label for="email" class="col-sm-5 col-form-label">Email</label>
+					<div class="col-sm-7">
+						<input type="email" class="form-control" name="email" required>
+					</div>
+				</div>
+
+				<!-- Confirm Email -->
+				<div class="form-group row">
+					<label for="email" class="col-sm-5 col-form-label">Confirm Email</label>
+					<div class="col-sm-7">
+						<input type="email" class="form-control" name="confirm_email" required>
+					</div>
+				</div>
+
+				
+				<!-- Phone -->
+				<div class="form-group row">
+					<label for="phone" class="col-sm-5 col-form-label">Phone</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" name="phone" required>
+					</div>
+				</div>
+				
+				<!-- Residence address -->
+				<div class="form-group row">
+					<label for="residence_address" class="col-sm-5 col-form-label">Residence Address</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" name="residence_address" required>
+					</div>
+				</div>
+				
+	
 				<div class="form-check text-center">
 				  <label class="form-check-label">
 					<input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
@@ -181,7 +193,7 @@
 				</div>
 			
 				<div class="text-center" style="margin-top: 10px">
-					<button name="" id="" style="font-size: 28px" class="btn btn-primary" type="submit">Save & Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+					<button name="" id="" style="font-size: 28px" class="btn btn-primary" type="submit" onclick="ValidateEmail()">Save & Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 				</div>
 			</form>
 		</div>
@@ -197,6 +209,18 @@
 			<?php echo $content_bottom; ?>
 </div>
 <script>
+
+function validateEmail ()
+{
+	
+  let email1 = $('input[name=email]').val()
+  let email2 = $('input[name=confirm_email]').val()
+  if (email1 == email2 ) {
+    return true; 
+  } else {
+    return false; 
+  }
+}
 
 $(document).ready(function() {
 	$('.datetime').datetimepicker({
