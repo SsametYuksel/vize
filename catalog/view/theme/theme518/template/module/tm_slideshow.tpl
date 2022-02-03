@@ -1,16 +1,16 @@
 <script>
 	jQuery(function(){
 		jQuery('#camera_wrap_<?php echo $module; ?>').camera({
-			navigation: false,
+			navigation: true,
 			playPause: false,
 			thumbnails: false,
-			navigationHover: false,
+			navigationHover: true,
 			barPosition: 'top',
 			loader: false,
 			time: 3000,
-			transPeriod:800,
+			transPeriod:500,
 			alignment: 'center',
-			autoAdvance: false,
+			autoAdvance: true,
 			mobileAutoAdvance: true,
 			barDirection: 'leftToRight', 
 			barPosition: 'bottom',
