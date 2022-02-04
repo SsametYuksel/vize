@@ -523,4 +523,9 @@ class ModelCatalogProduct extends Model {
 			return 0;
 		}
 	}
+
+	public function getSupportingDocs($where){
+        return $this->db->query("SELECT `need_supporting_docs` FROM " . DB_PREFIX . "product WHERE product_id = " . $where)->row;
+
+    }
 }

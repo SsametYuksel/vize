@@ -1,6 +1,9 @@
 <?php
 class ControllerCommonApplyform extends Controller {
 	public function index() {
+	    if(!$_SERVER['REQUEST_METHOD'] === 'POST'){
+            $this->response->redirect($this->url->link('common/home'));
+        }
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
@@ -13,7 +16,7 @@ class ControllerCommonApplyform extends Controller {
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
 
-			$data['header_top'] = $this->load->controller('common/header_top');
+		$data['header_top'] = $this->load->controller('common/header_top');
 			
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -21,10 +24,9 @@ class ControllerCommonApplyform extends Controller {
 
 		// Load Product model
 		$this->load->model('catalog/product');
-		$data['nationalities'] = $this->model_catalog_product->getProducts();
+//		$data['nationalities'] = $this->model_catalog_product->getProducts();
 
-		$data['passports'] = $this->model_catalog_product->getProductOptions(56)[0]['product_option_value'];
-		
+		//$data['passports'] = $this->model_catalog_product->getProductOptions(56)[0]['product_option_value'];
 		
 		// print_r($data['nationalities']); exit;
 		// print_r($data['passports'][0]); exit;
@@ -36,23 +38,27 @@ class ControllerCommonApplyform extends Controller {
 
 		}elseif(isset($this->request->post['type']) && $this->request->post['type'] == 'confirm'){
 
-			$this->session->data['name'] = $data['name'] = $this->request->post['name'];
-			$this->session->data['surname'] = $data['surname'] = $this->request->post['surname'];
-			$this->session->data['birthplace'] = $data['birthplace'] = $this->request->post['birthplace'];
-			$this->session->data['birthdate'] = $data['birthdate'] = $this->request->post['birthdate'];
-			$this->session->data['passport'] = $data['passport'] = $this->request->post['passport'];
-			$this->session->data['email'] = $data['email'] = $this->request->post['email'];
-			$this->session->data['phone'] = $data['phone'] = $this->request->post['phone'];
-			$this->session->data['residence_address'] = $data['residence_address'] = $this->request->post['residence_address'];
-			$this->session->data['passport_issue_date'] = $data['passport_issue_date'] = $this->request->post['passport_issue_date'];
-			$this->session->data['passport_expiry_date'] = $data['passport_expiry_date'] = $this->request->post['passport_expiry_date'];
-			$this->session->data['supporting_document_type'] = $data['supporting_document_type'] = $this->request->post['supporting_document_type'];
-			$this->session->data['supporting_document'] = $data['supporting_document'] = $this->request->post['supporting_document'];
-			$this->session->data['supporting_document_number'] = $data['supporting_document_number'] = $this->request->post['supporting_document_number'];
-			$this->session->data['supporting_document_expiry_date'] = $data['supporting_document_expiry_date'] = $this->request->post['supporting_document_expiry_date'];
+		    $details = $this->model_catalog_product->getProductDetails($this->session->data['nationality_id']);
+		    print_r($details);
+		    exit;
 
-			$data['number_of_entries'] = $this->session->data['number_of_entries'];
-			$data['stay_duration'] = $this->session->data['stay_duration'];
+			$this->session->data['name'] = $data['name'] = $this->request->post['name']; //
+			$this->session->data['surname'] = $data['surname'] = $this->request->post['surname'];//
+			$this->session->data['birthplace'] = $data['birthplace'] = $this->request->post['birthplace'];//
+			$this->session->data['birthdate'] = $data['birthdate'] = $this->request->post['birthdate'];//
+			$this->session->data['passport'] = $data['passport'] = $this->request->post['passport'];//
+			$this->session->data['email'] = $data['email'] = $this->request->post['email'];//
+			$this->session->data['phone'] = $data['phone'] = $this->request->post['phone'];//
+			$this->session->data['residence_address'] = $data['residence_address'] = $this->request->post['residence_address'];//
+			$this->session->data['passport_issue_date'] = $data['passport_issue_date'] = $this->request->post['passport_issue_date'];//
+			$this->session->data['passport_expiry_date'] = $data['passport_expiry_date'] = $this->request->post['passport_expiry_date'];//
+			$this->session->data['supporting_document_type'] = $data['supporting_document_type'] = $this->request->post['supporting_document_type'];//
+			$this->session->data['supporting_document'] = $data['supporting_document'] = $this->request->post['supporting_document'];//
+			$this->session->data['supporting_document_number'] = $data['supporting_document_number'] = $this->request->post['supporting_document_number'];//
+			$this->session->data['supporting_document_expiry_date'] = $data['supporting_document_expiry_date'] = $this->request->post['supporting_document_expiry_date'];//
+
+            $this->session->data['number_of_entries'] = $data['number_of_entries'] = $details['number_of_entries'];
+            $this->session->data['stay_duration'] = $data['stay_duration'] = $details['stay_duration'];
 			$data['nationality'] = $this->model_catalog_product->getProduct($this->session->data['nationality_id'])['name'];
 			$option = $this->model_catalog_product->getProductOptions($this->session->data['nationality_id'])[0];
 			$this->session->data['product_option_id'] = $option['product_option_id'];
@@ -69,16 +75,21 @@ class ControllerCommonApplyform extends Controller {
 
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/common/applyformconfirm.tpl', $data));
 		}else{
+		    $nationality_id = $this->request->post['nationality_id'];
+            $this->session->data['nationality_id'] = $nationality_id;
 
-			$this->session->data['number_of_entries'] = $this->request->post['number_of_entries'];
-			$this->session->data['stay_duration'] = $this->request->post['stay_duration'];
-			$this->session->data['nationality_id'] = $this->request->post['nationality_id'];
-			$this->session->data['passport_id'] = $this->request->post['passport_id'];
-			$this->session->data['arrival_date'] = $this->request->post['arrival_date'];
+			$arrival_date = $this->request->post['arrival_date'];
+            $this->session->data['arrival_date'] = $arrival_date;
+            $data['arrival_date'] = $arrival_date;
+
+			$supporting_document = $this->model_catalog_product->getSupportingDocs($nationality_id);
+            $this->session->data['supporting_document']= $supporting_document["need_supporting_docs"];
+            $data['supporting_document'] = $supporting_document["need_supporting_docs"];
+
+            //3 tane session var.
 
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/common/applyform.tpl', $data));
 		}
-		
 	}
 
 	public function getPassports()

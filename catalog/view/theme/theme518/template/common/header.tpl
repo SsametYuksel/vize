@@ -74,7 +74,11 @@
     <script src="catalog/view/theme/theme518/js/photo-swipe/code.photoswipe-3.0.5.min.js"
             type="text/javascript"></script>
 
-
+    <!--Lightpick-->
+    <link rel="stylesheet" href="catalog/view/theme/theme518/stylesheet/lightpick.css" media="screen"/>
+    <script src="catalog/view/javascript/moment.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/lightpick.js" type="text/javascript"></script>
+    
     <!--[if lt IE 9]>
     <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'>
         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img
@@ -315,4 +319,3 @@
         </div>
     </div>
     <?php } ?>
-

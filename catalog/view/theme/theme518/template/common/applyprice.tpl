@@ -23,7 +23,7 @@
 					<label for="">Nationality</label>
 					<select id="nationality" class="form-control" name="nationality_id" id="">
 						<?php foreach($nationalities as $nationality) {
-							echo '<option data-price="'.$nationality['price'].'" value='.$nationality['product_id'].'>'.$nationality['name'].'</option>';
+							echo '<option data-price="'.$nationality['price'].'" value='.$nationality['product_id'].' data-pass_type="'.$nationality['passport_type_allowance'].'" data-supporting_docs="'.$nationality['need_supporting_docs'].'" data-max_stay_days="'.$nationality['max_stay_days'].'" data-extra_note="'.$nationality['extra_passport_note'].'">'.$nationality['name'].'</option>';
 						}?>
 					</select>
 				</div>			
@@ -40,10 +40,10 @@
 				<div class="form-group" style="max-width: 300px;  margin: auto">
 
 					<label for="">Arrival Date</label>
-					<div class='input-group date' id='datetimepicker1'>
-					<input required type='text' class="form-control" name="arrival_date" />
-					<span class="input-group-addon">
-					<span class="glyphicon glyphicon-calendar"></span>
+					<div class='input-group date'>
+						<input required type='text' class="form-control" id='datepicker' name="arrival_date">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
 					</div>
 				</div>	
@@ -53,9 +53,11 @@
 
 			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px; background-color: #f7f7f7">
 				<p>Nationality: <span id="nationality-confirm" style="font-weight: 600; color: black"> </span></p>
-				<p>Passport Type: <span style="font-weight: 600; color: black" id="passport-confirm"> </span></p>
+				<p>Passport Type Allowance: <span style="font-weight: 600; color: black" id="passport-confirm"> </span></p>
+				<p>Max stay days: <span style="font-weight: 600; color: black" id="max-days-confirm"></span></p>
+				<p>Supporting Documents: <span style="font-weight: 600; color: black" id="supporting-docs-confirm"></span></p>
+				<p>Extra Passport Note: <span style="font-weight: 600; color: black" id="extra-notes-confirm"></span></p>
 				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"></span></h2>
-
 			</div>
 
 		</div>
@@ -116,11 +118,23 @@ var updatePriceWhenNationalitySelect = () => {
 
 		setTimeout(function() {
 			country = $('option:selected', '#nationality').text()
+			pass_type = $('option:selected', '#nationality').data('pass_type') //pass_type
+			max_stay_days = $('option:selected', '#nationality').data('max_stay_days') //max_stay_days
+			supporting_docs = $('option:selected', '#nationality').data('supporting_docs') //supporting_docs
+			extra_note = $('option:selected', '#nationality').data('extra_note') //extra_note
 			price = $('option:selected', '#nationality').data('price')
-			$('#price').text(' ' + price)
-			$('#price').toggleClass('active')
+			$('#price').text(' ' + price).toggleClass('active')
 			$('#nationality-confirm').text(country)
-			$('#passport-confirm').text('Ordinary')
+			$('#passport-confirm').text(pass_type)
+			$('#max-days-confirm').text(max_stay_days)
+			if ($('option:selected', '#nationality').data('extra_note').length === 0)
+				extra_note = "-";
+			$('#extra-notes-confirm').text(extra_note)
+			if(supporting_docs == 0)
+				supporting_docs = "No";
+			else
+				supporting_docs = "Yes";
+			$('#supporting-docs-confirm').text(supporting_docs)
 		}, 400);
 
 	});
@@ -131,15 +145,33 @@ var initializeNationalityConfirm = () => {
 	$('#price').toggleClass('active')
 
 	setTimeout(function() {
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+		today = mm + '/' + dd + '/' + yyyy;
+		$("input[name='arrival_date']").val(today);
 		country = $('option:selected', '#nationality').text()
+		pass_type = $('option:selected', '#nationality').data('pass_type') //pass_type
+		max_stay_days = $('option:selected', '#nationality').data('max_stay_days') //max_stay_days
+		supporting_docs = $('option:selected', '#nationality').data('supporting_docs') //supporting_docs
+		extra_note = $('option:selected', '#nationality').data('extra_note') //extra_note
 		price = $('option:selected', '#nationality').data('price')
-		$('#price').text(' ' + price)
-		$('#price').toggleClass('active')
+		$('#price').text(' ' + price).toggleClass('active')
 		$('#nationality-confirm').text(country)
-		$('#passport-confirm').text('Ordinary')
+		$('#passport-confirm').text(pass_type)
+		$('#max-days-confirm').text(max_stay_days)
+		if ($('option:selected', '#nationality').data('extra_note').length == 0)
+			extra_note = "-";
+		$('#extra-notes-confirm').text(extra_note)
+		if(supporting_docs == 0)
+			supporting_docs = "No";
+		else
+			supporting_docs = "Yes";
+		$('#supporting-docs-confirm').text(supporting_docs)
 	}, 400);
-
 }
+
 
 var initializePassportConfirm = () => {
 
@@ -158,14 +190,20 @@ var findSelectedNationality = () => {
 }
 
 $(document).ready(function() {
-	initializeNationalityConfirm()
-	updatePriceWhenNationalitySelect()
+	initializeNationalityConfirm();
+	updatePriceWhenNationalitySelect();
 
-	$('#datetimepicker1').datetimepicker({
-		format: "L",
-		minDate: new Date(),
-	})
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+	today = mm + '/' + dd + '/' + yyyy;
+	var picker = new Lightpick({
+		field: document.getElementById('datepicker'),
+		format: 'MM/DD/YYYY',
+		repick: true,
+		setDate: today
+	});
 });   
 </script>
 <?php echo $footer; ?>
-
