@@ -1,5 +1,17 @@
 <?php echo $header; ?>
+
+
+<style>
+	#top-part img {
+		width: 100%;
+	}
+
+</style>
+
+
 			<div class="header_modules"><?php echo $header_top; ?></div>
+
+			<div id="top-part"><?php echo $content_top; ?></div>
 
 <style>
 	.col-form-label {
@@ -8,14 +20,30 @@
 		font-weight: 500;
 	}
 
+	.text-dark {
+		color: black;
+	}
+
 	.country-select.inside {width: 100%;}
 
 	.displayNone{
 		display: none;
 	}
 
+	#container {
+		background-image: url('http://ferisoftdemo.com/vize/image/applyform1.jpg');
+		background-size: contain;
+	}
+	
+	#applyform {
+		max-width: 600px;
+		background-color: #ffffffe6;
+		border-radius: 10px;
+		box-shadow: 1px 1px 10px gray;
+		padding: 4%;
+	}
 </style>
-<div id="container" style="margin: 60px 0">
+<div id="container" style="padding: 60px 0">
 	<div class="container">
 		<div class="row"><?php echo $column_left; ?>
 		<?php if ($column_left && $column_right) { ?>
@@ -25,11 +53,10 @@
 		<?php } else { ?>
 		<?php $class = 'col-sm-12'; ?>
 		<?php } ?>
-		<div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?></div>
 		<?php echo $column_right; ?></div>
-		<div class="container" style="max-width: 600px">
+		<div id="applyform" class="container" style="max-width: 600px">
 			<div class="text-center">
-				<h2>Please fill the following form</h2>
+				<h2 class="text-dark">Please fill the following form</h2>
 				<p>Make sure to fill all input correct</p>
 				<br>
 			</div>
@@ -217,7 +244,11 @@
 						<input type="text" class="form-control" name="residence_address" <?php if(isset($residence_address)){echo "value=$residence_address";} ?> required>
 					</div>
 				</div>
-				<?php } ?>
+				<?php } ?>	
+
+				<br>
+				<br>
+				<br>
 
 				<div class="form-check text-center">
 				  <label class="form-check-label">

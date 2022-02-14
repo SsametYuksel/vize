@@ -1,7 +1,15 @@
 <?php echo $header; ?>
 
+<style>
+	#top-part img {
+		width: 100%;
+	}
+
+</style>
+
 			<div class="header_modules"><?php echo $header_top; ?></div>
 			
+			<div id="top-part"><?php echo $content_top; ?></div>
 <div id="container" style="margin: 60px 0">
 	<div class="container">
 		<div class="row"><?php echo $column_left; ?>
@@ -12,7 +20,7 @@
 		<?php } else { ?>
 		<?php $class = 'col-sm-12'; ?>
 		<?php } ?>
-		<div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?></div>
+		
 		<?php echo $column_right; ?></div>
 		<form action="<?php echo $applyform_url?>" method="POST">
 		<div class="row">
@@ -49,8 +57,10 @@
 				<br>
 
 				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
-					<label for="checkBox" style="margin-right: 5px">Insurance ($10)</label>
-					<input type="checkbox" class="form-check-input" name="insurance" value="0" id="insurance">
+					<input type="radio" class="form-check-input insurance" name="insurance" value="0">
+					<label for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
+					<input type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
+					<label for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
 				</div>
 				<br>
 
@@ -182,8 +192,8 @@ var updatePriceWhenNationalitySelect = () => {
 	});
 }
 
-$("#insurance").change(function() {
-	if(this.checked) {
+$(".insurance").change(function() {
+	if($(this).val() != 0) {
 		var currentPrice = parseInt($('#price').text().replace('$', ''));
 		currentPrice += 10;
 		$('#price').text('$'+currentPrice.toFixed(2));

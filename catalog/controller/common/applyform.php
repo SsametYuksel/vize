@@ -1,11 +1,11 @@
 <?php
 class ControllerCommonApplyform extends Controller {
 	public function index() {
-	    if(!(isset($this->session->data['product_type']) || isset($this->session->data['name']) ||
-            isset($this->request->files['image']) || isset($this->session->data['image_names']) || isset
-            ($this->request->post['name']))){
-            $this->response->redirect($this->url->link('common/home'));
-        }
+	    // if(!(isset($this->session->data['product_type']) || isset($this->session->data['name']) ||
+        //     isset($this->request->files['image']) || isset($this->session->data['image_names']) || isset
+        //     ($this->request->post['name']))){
+        //     $this->response->redirect($this->url->link('common/applyform'));
+        // }
 
 //        echo '<pre>', print_r($this->session->data['product_type']), '</pre>';
 //	    echo '<br>';
@@ -465,7 +465,7 @@ class ControllerCommonApplyform extends Controller {
                 }
             }
             else{
-                $this->response->redirect($this->url->link('common/home'));
+                $this->response->redirect($this->url->link('common/applyform'));
             }
 
             $insurance = 0;
@@ -485,7 +485,7 @@ class ControllerCommonApplyform extends Controller {
             $this->session->data['order_id'] = $this->model_checkout_order->addMyOrderEasy($order_data);
         }
         else{
-            $this->response->redirect($this->url->link('common/home'));
+            $this->response->redirect($this->url->link('common/applyform'));
         }
 
 //		$order_data['customer_id'] = 0;
