@@ -57,7 +57,7 @@
 				<br>
 
 				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
-					<input type="radio" class="form-check-input insurance" name="insurance" value="0">
+					<input type="radio" class="form-check-input insurance" name="insurance" value="0" checked>
 					<label for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
 					<input type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
 					<label for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
