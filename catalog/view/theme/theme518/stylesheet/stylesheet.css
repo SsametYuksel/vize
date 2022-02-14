@@ -3,11 +3,13 @@
 @import url(//fonts.googleapis.com/css?family=Ubuntu+Condensed&subset=cyrillic,cyrillic-ext,latin);
 @import url(//fonts.googleapis.com/css?family=Pacifico);
 @import url(//fonts.googleapis.com/css?family=Ubuntu:300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 /*========================================================
                       Main Styles
 =========================================================*/
 body {
-  font: 300 13px/18px "Ubuntu Condensed", sans-serif;
+  font-family: 'Open Sans',serif;
+  /*font: 300 13px/18px "Ubuntu Condensed", sans-serif;*/
   color: #a5a8aa;
   background: #fff;
 }
@@ -88,7 +90,8 @@ a:hover {
 
 p,
 .product-thumb .description {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: "Ubuntu", sans-serif;*/
   letter-spacing: 0.52px;
 }
 

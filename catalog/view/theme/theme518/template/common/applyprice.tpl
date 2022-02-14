@@ -38,7 +38,6 @@
 				<br>
 				
 				<div class="form-group" style="max-width: 300px;  margin: auto">
-
 					<label for="">Arrival Date</label>
 					<div class='input-group date'>
 						<input required type='text' class="form-control" id='datepicker' name="arrival_date">
@@ -46,8 +45,20 @@
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
 					</div>
-				</div>	
+				</div>
+				<br>
 
+				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
+					<label for="checkBox" style="margin-right: 5px">Insurance ($10)</label>
+					<input type="checkbox" class="form-check-input" name="insurance" value="0" id="insurance">
+				</div>
+				<br>
+
+				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
+					<label id="modal_link" style="margin-right: 5px"  data-toggle="modal" 
+						   data-target="#exampleModal">Click here 
+						for Passenger Locator Form</label>
+				</div>
 
 			</div>
 
@@ -59,6 +70,7 @@
 				<p>Extra Passport Note: <span style="font-weight: 600; color: black" id="extra-notes-confirm"></span></p>
 				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"></span></h2>
 			</div>
+			<input type="text" name="price_visa" hidden>
 
 		</div>
 		<div class="text-center" style="margin-top: 100px">
@@ -84,7 +96,30 @@
     		<a href=""><h2 style="font-size: 36px">Ready to visit Turkey?</h2></a>
   		</div>
 	</div>
+	<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="display: flex; justify-content: space-between; padding: 5px 15px;">
+					<h2 style="margin: 20px 0 20px;">Passenger Locator Form</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p style="color: black; font: ">Form for entry to Turkey</p>
+					<ol style="color: black" type="1">
+						<li>The form must be filled within last 72 hours before travel</li>
+						<li>The information must be proper and correct because in case of any contact with Covid-19 patient, The Ministry of Health will contact you.</li>
+						<li>The form may be checked at the borders and if you have not filled or given misleading statements, you may face legal and administrative sanctions.</li>
+						<li>If you have not filled it, you might be refused to enter Turkey.</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 <style>
 .picker-switch{
 	display: none;
@@ -105,16 +140,23 @@
 	transition: all 0.5s;
 }
 
+#modal_link{
+	cursor: pointer;
+}
+
 </style>
 <div class="content_bottom">
 			<?php echo $content_bottom; ?>
 </div>
 <script>
-
+	$('#myModal').on('shown.bs.modal', function () {
+		$('#myInput').trigger('focus')
+	})
 
 var updatePriceWhenNationalitySelect = () => {
 	$('#nationality').on('change', function() {
-		$('#price').toggleClass('active')
+		$('#price').toggleClass('active');
+		$( "#insurance" ).prop( "checked", false );
 
 		setTimeout(function() {
 			country = $('option:selected', '#nationality').text()
@@ -140,9 +182,24 @@ var updatePriceWhenNationalitySelect = () => {
 	});
 }
 
+$("#insurance").change(function() {
+	if(this.checked) {
+		var currentPrice = parseInt($('#price').text().replace('$', ''));
+		currentPrice += 10;
+		$('#price').text('$'+currentPrice.toFixed(2));
+		$('#insurance').val(1);
+	}else{
+		var currentPrice = parseInt($('#price').text().replace('$', ''));
+		currentPrice -= 10;
+		$('#price').text('$'+currentPrice.toFixed(2));
+		$('#insurance').val(0);
+	}
+});
+
 var initializeNationalityConfirm = () => {
 
 	$('#price').toggleClass('active')
+	$( "#insurance" ).prop( "checked", false );
 
 	setTimeout(function() {
 		var today = new Date();
@@ -202,6 +259,7 @@ $(document).ready(function() {
 		field: document.getElementById('datepicker'),
 		format: 'MM/DD/YYYY',
 		repick: true,
+		minDate: today,
 		setDate: today
 	});
 });   

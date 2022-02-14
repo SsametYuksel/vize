@@ -66,56 +66,39 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	public function edit() {
-		$this->load->language('sale/order');
+        $this->load->language('sale/order');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+        $this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('sale/order');
+        $this->load->model('sale/order');
 
-		unset($this->session->data['cookie']);
+        unset($this->session->data['cookie']);
 
-		if ($this->validate()) {
-			// API
-			$this->load->model('user/api');
+        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+            $this->model_sale_order->editOrderVisa($this->request->get['order_id'], $this->request->post);
 
-			$api_info = $this->model_user_api->getApi($this->config->get('config_api_id'));
+            $this->session->data['success'] = $this->language->get('text_success');
 
-			if ($api_info) {
-				$curl = curl_init();
+            $url = '';
 
-				// Set SSL if required
-				if (substr(HTTPS_CATALOG, 0, 5) == 'https') {
-					curl_setopt($curl, CURLOPT_PORT, 443);
-				}
+            if (isset($this->request->get['sort'])) {
+                $url .= '&sort=' . $this->request->get['sort'];
+            }
 
-				curl_setopt($curl, CURLOPT_HEADER, false);
-				curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-				curl_setopt($curl, CURLOPT_USERAGENT, $this->request->server['HTTP_USER_AGENT']);
-				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($curl, CURLOPT_FORBID_REUSE, false);
-				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($curl, CURLOPT_URL, HTTPS_CATALOG . 'index.php?route=api/login');
-				curl_setopt($curl, CURLOPT_POST, true);
-				curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($api_info));
+            if (isset($this->request->get['order'])) {
+                $url .= '&order=' . $this->request->get['order'];
+            }
 
-				$json = curl_exec($curl);
+            if (isset($this->request->get['page'])) {
+                $url .= '&page=' . $this->request->get['page'];
+            }
 
-				if (!$json) {
-					$this->error['warning'] = sprintf($this->language->get('error_curl'), curl_error($curl), curl_errno($curl));
-				} else {
-					$response = json_decode($json, true);
+            $this->response->redirect($this->url->link('sale/order', 'token=' . $this->session->data['token'] .
+                $url,
+                'SSL'));
+        }
 
-					if (isset($response['cookie'])) {
-						$this->session->data['cookie'] = $response['cookie'];
-					}
-
-					curl_close($curl);
-				}
-			}
-		}
-
-		$this->getForm();
+        $this->getForm();
 	}
 
 	public function delete() {
@@ -744,7 +727,26 @@ class ControllerSaleOrder extends Controller {
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['shipping_code'] = $order_info['shipping_code'];
 
-			// Add products to the API
+            $data_customer = $this->model_sale_order->getPassportDetailsCustomer($this->request->get['order_id']);
+
+            foreach ($data_customer as $key => $datacustomer){
+                $data[$key] = $datacustomer;
+            }
+
+//            $data['birthdate'] = $data_customer['birthdate'];
+//            $data['birthplace'] = $data_customer['birthplace'];
+//            $data['passport_number'] = $data_customer['passport_number'];
+//            $data['residence_address'] = $data_customer['residence_address'];
+//            $data['passport_issue_date'] = $data_customer['passport_issue_date'];
+//            $data['passport_expiry_date'] = $data_customer['passport_expiry_date'];
+//            $data['arrival_date'] = $data_customer['arrival_date'];
+//            $data['supporting_document_type'] = $data_customer['supporting_document_type'];
+//            $data['supporting_document'] = $data_customer['supporting_document'];
+//            $data['supporting_document_number'] = $data_customer['supporting_document_number'];
+//            $data['supporting_document_expiry_date'] = $data_customer['supporting_document_expiry_date'];
+
+
+            // Add products to the API
 			$data['products'] = array();
 			
 			$products = $this->model_sale_order->getOrderProducts($this->request->get['order_id']);
@@ -1180,7 +1182,25 @@ class ControllerSaleOrder extends Controller {
 			$data['fax'] = $order_info['fax'];
 			
 			$data['account_custom_field'] = $order_info['custom_field'];
-		
+
+			//can addition
+            $order_info_passport = $this->model_sale_order->getPassportDetailsCustomer($order_id);
+
+            $data['birthdate'] = $order_info_passport['birthdate'];
+            $data['birthplace'] = $order_info_passport['birthplace'];
+            $data['passport_number'] = $order_info_passport['passport_number'];
+            $data['residence_address'] = $order_info_passport['residence_address'];
+            $data['passport_issue_date'] = $order_info_passport['passport_issue_date'];
+            $data['passport_expiry_date'] = $order_info_passport['passport_expiry_date'];
+            if($order_info_passport['supporting_document_type'] != NULL){
+                $data['supporting_document_type'] = $order_info_passport['supporting_document_type'];
+                $data['supporting_document'] = $order_info_passport['supporting_document'];
+                $data['supporting_document_number'] = $order_info_passport['supporting_document_number'];
+                $data['supporting_document_expiry_date'] = $order_info_passport['supporting_document_expiry_date'];
+            }
+            $data['category'] = $order_info_passport['category'];
+            $data['arrival_date'] = $order_info_passport['arrival_date'];
+
 		
 			// Custom Fields
 			$this->load->model('sale/custom_field');
@@ -2484,4 +2504,8 @@ class ControllerSaleOrder extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput($json);
 	}
+
+	public function updateCustomerOrder(){
+
+    }
 }

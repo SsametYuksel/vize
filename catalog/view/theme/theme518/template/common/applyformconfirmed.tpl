@@ -28,7 +28,6 @@
             <h3> We will prepare the passport and will inform your through Email</h3>
             <h3> Thanks for your apply</h3>
         </div>
-	
 	</div>
 </div>
 

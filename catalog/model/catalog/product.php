@@ -524,8 +524,19 @@ class ModelCatalogProduct extends Model {
 		}
 	}
 
-	public function getSupportingDocs($where){
+	public function getNeedSupportingDocs($where){
         return $this->db->query("SELECT `need_supporting_docs` FROM " . DB_PREFIX . "product WHERE product_id = " . $where)->row;
 
+    }
+
+	public function getProductDetails($where){
+		$sql = "SELECT `passport_type_allowance`,`need_supporting_docs`,`max_stay_days`,`extra_passport_note`,`price` FROM " . DB_PREFIX . "product WHERE product_id = " . $where;
+		// echo $sql; exit;
+        return $this->db->query($sql)->row;
+    }
+
+    public function getIdToPrice($whereId, $whereType){
+        $sql = "SELECT " . DB_PREFIX . "product_description.name as name, " . DB_PREFIX . "category_description.name as catname, price FROM " . DB_PREFIX . "product_option_value LEFT JOIN " . DB_PREFIX . "product_description ON " . DB_PREFIX . "product_option_value.product_id=" . DB_PREFIX . "product_description.product_id LEFT JOIN " . DB_PREFIX . "category_description ON option_value_id=category_id WHERE " . DB_PREFIX . "product_option_value.product_id=".$whereId." AND option_value_id=".$whereType;
+        return $this->db->query($sql)->row;
     }
 }

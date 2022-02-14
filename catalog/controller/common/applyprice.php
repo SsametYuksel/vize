@@ -1,6 +1,14 @@
 <?php
 class ControllerCommonApplyprice extends Controller {
 	public function index() {
+        if (!$this->request->get["type"]){
+            $this->response->redirect($this->url->link('common/home'));
+        }
+
+        if(isset($this->session->data['name'])){
+            unset($_SESSION['name']);
+        }
+
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
@@ -38,8 +46,10 @@ class ControllerCommonApplyprice extends Controller {
 
 		}, $data['nationalities']);
 
+		$this->session->data['product_type'] = $this->request->get["type"];
+
 		$data['applyform_url'] = $this->url->link('common/applyform');
-		
+
 		// print_r($data['nationalities'][60]['prices']); exit;
 		// print_r($data['passports'][0]); exit;
 		

@@ -831,4 +831,90 @@ class ModelCheckoutOrder extends Model {
 
 		$this->event->trigger('post.order.history.add', $order_id);
 	}
+
+	public function addMyOrder($data = array()){
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "order` 
+        SET  
+        firstname = '" . $this->db->escape($data['name']) . "', 
+        lastname = '" . $this->db->escape($data['surname']) . "', 
+        birthdate = '" . $this->db->escape($data['birthdate']) . "', 
+        birthplace = '" . $this->db->escape($data['birthplace']) . "', 
+        passport_number = '" . $this->db->escape($data['passport_number']) . "', 
+        email = '" . $this->db->escape($data['email']) . "', 
+        telephone = '" . $this->db->escape($data['phone']) . "',
+        residence_address = '" . $this->db->escape($data['residence_address']) . "',
+        passport_issue_date = '" . $this->db->escape($data['passport_issue_date']) . "',
+        passport_expiry_date = '" . $this->db->escape($data['passport_expiry_date']) . "',
+        total = '" . (float)$data['total'] . "', 
+        order_status_id = '" . $this->db->escape($data['order_status_id']) . "',
+        category = '" . $this->db->escape($data['category']) . "',
+        arrival_date = '" . $this->db->escape($data['arrival_date']) . "',
+        date_added = NOW(), 
+        date_modified = NOW()");
+    }
+
+    public function addMyOrderEasy($data = array()){
+	    if (isset($data["supporting_document"])){
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "order` 
+            SET  
+            firstname = '" . $this->db->escape($data['name']) . "', 
+            photos = '" . $this->db->escape($data['photos']) . "', 
+            nationality = '" . $this->db->escape($data['nationality']) . "', 
+            supporting_document = '" . $this->db->escape($data['supporting_document']) . "', 
+            category = '" . $this->db->escape($data['category']) . "',
+            arrival_date = '" . $this->db->escape($data['arrival_date']) . "',
+            insurance = '" . $this->db->escape($data['insurance']) . "',
+            total = '" . (float)$data['total'] . "', 
+            order_status_id = '" . $this->db->escape($data['order_status_id']) . "',
+            date_added = NOW(), 
+            date_modified = NOW()");
+        }else{
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "order` 
+            SET  
+            firstname = '" . $this->db->escape($data['name']) . "', 
+            photos = '" . $this->db->escape($data['photos']) . "', 
+            nationality = '" . $this->db->escape($data['nationality']) . "', 
+            category = '" . $this->db->escape($data['category']) . "',
+            arrival_date = '" . $this->db->escape($data['arrival_date']) . "',
+            insurance = '" . $this->db->escape($data['insurance']) . "',
+            total = '" . (float)$data['total'] . "', 
+            order_status_id = '" . $this->db->escape($data['order_status_id']) . "',
+            date_added = NOW(), 
+            date_modified = NOW()");
+        }
+    }
+
+    public function getSupportingDocumentTypes(){
+        return $this->db->query("SELECT * FROM " . DB_PREFIX . "supporting_document_type")->rows;
+    }
+
+    public function getSupportingDocuments($id){
+        return $this->db->query("SELECT * FROM `" . DB_PREFIX . "supporting_document` WHERE supporting_document_type_id = '"
+            . $id['id'] . "'");
+    }
+
+	public function addMyOrderDocs($data = array()){
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "order` 
+        SET  
+        firstname = '" . $this->db->escape($data['name']) . "', 
+        lastname = '" . $this->db->escape($data['surname']) . "', 
+        birthdate = '" . $this->db->escape($data['birthdate']) . "', 
+        birthplace = '" . $this->db->escape($data['birthplace']) . "', 
+        passport_number = '" . $this->db->escape($data['passport_number']) . "', 
+        email = '" . $this->db->escape($data['email']) . "', 
+        telephone = '" . $this->db->escape($data['phone']) . "',
+        residence_address = '" . $this->db->escape($data['residence_address']) . "',
+        passport_issue_date = '" . $this->db->escape($data['passport_issue_date']) . "',
+        passport_expiry_date = '" . $this->db->escape($data['passport_expiry_date']) . "',
+        supporting_document_type = '" . $this->db->escape($data['supporting_document_type']) . "',
+        supporting_document = '" . $this->db->escape($data['supporting_document']) . "',
+        supporting_document_number = '" . $this->db->escape($data['supporting_document_number']) . "',
+        supporting_document_expiry_date = '" . $this->db->escape($data['supporting_document_expiry_date']) . "',
+        total = '" . (float)$data['total'] . "', 
+        order_status_id = '" . $this->db->escape($data['order_status_id']) . "',
+        category = '" . $this->db->escape($data['category']) . "',
+        arrival_date = '" . $this->db->escape($data['arrival_date']) . "',
+        date_added = NOW(), 
+        date_modified = NOW()");
+    }
 }

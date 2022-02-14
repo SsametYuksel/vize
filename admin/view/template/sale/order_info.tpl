@@ -19,7 +19,7 @@
       <div class="panel-body">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab-order" data-toggle="tab"><?php echo $tab_order; ?></a></li>
-          <li><a href="#tab-payment" data-toggle="tab"><?php echo $tab_payment; ?></a></li>
+          <!--<li><a href="#tab-payment" data-toggle="tab"><?php echo $tab_payment; ?></a></li>
           <?php if ($shipping_method) { ?>
           <li><a href="#tab-shipping" data-toggle="tab"><?php echo $tab_shipping; ?></a></li>
           <?php } ?>
@@ -30,7 +30,7 @@
           <?php } ?>
           <?php if ($maxmind_id) { ?>
           <li><a href="#tab-fraud" data-toggle="tab"><?php echo $tab_fraud; ?></a></li>
-          <?php } ?>
+          <?php } ?>-->
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="tab-order">
@@ -38,22 +38,6 @@
               <tr>
                 <td><?php echo $text_order_id; ?></td>
                 <td>#<?php echo $order_id; ?></td>
-              </tr>
-              <tr>
-                <td><?php echo $text_invoice_no; ?></td>
-                <td><?php if ($invoice_no) { ?>
-                  <?php echo $invoice_no; ?>
-                  <?php } else { ?>
-                  <button id="button-invoice" class="btn btn-success btn-xs"><i class="fa fa-cog"></i> <?php echo $button_generate; ?></button>
-                  <?php } ?></td>
-              </tr>
-              <tr>
-                <td><?php echo $text_store_name; ?></td>
-                <td><?php echo $store_name; ?></td>
-              </tr>
-              <tr>
-                <td><?php echo $text_store_url; ?></td>
-                <td><a href="<?php echo $store_url; ?>" target="_blank"><?php echo $store_url; ?></a></td>
               </tr>
               <?php if ($customer) { ?>
               <tr>
@@ -77,9 +61,55 @@
                 <td><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></td>
               </tr>
               <tr>
-                <td><?php echo $text_telephone; ?></td>
-                <td><?php echo $telephone; ?></td>
+                <td>Birth date</td>
+                <td><?php echo $birthdate; ?></td>
               </tr>
+              <tr>
+                <td>Birth place</td>
+                <td><?php echo $birthplace; ?></td>
+              </tr>
+              <tr>
+                <td>Passport number</td>
+                <td><?php echo $passport_number; ?></td>
+              </tr>
+              <tr>
+                <td>Residence_address</td>
+                <td><?php echo $residence_address; ?></td>
+              </tr>
+              <tr>
+                <td>Passport issue date</td>
+                <td><?php echo $passport_issue_date; ?></td>
+              </tr>
+              <tr>
+                <td>Passport expiry date</td>
+                <td><?php echo $passport_expiry_date; ?></td>
+              </tr>
+              <tr>
+                <td>Category</td>
+                <td><?php echo $category; ?></td>
+              </tr>
+              <tr>
+                <td>Arrival date</td>
+                <td><?php echo $arrival_date; ?></td>
+              </tr>
+              <?php if(isset($supporting_document_type)){ ?>
+              <tr>
+                <td>Supporting document type</td>
+                <td><?php echo $supporting_document_type; ?></td>
+              </tr>
+              <tr>
+                <td>Supporting document</td>
+                <td><?php echo $supporting_document; ?></td>
+              </tr>
+              <tr>
+                <td>Supporting document number</td>
+                <td><?php echo $supporting_document_number; ?></td>
+              </tr>
+              <tr>
+                <td>Supporting document expiry date</td>
+                <td><?php echo $supporting_document_expiry_date; ?></td>
+              </tr>
+              <?php } ?>
               <?php if ($fax) { ?>
               <tr>
                 <td><?php echo $text_fax; ?></td>

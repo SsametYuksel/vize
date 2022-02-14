@@ -441,4 +441,29 @@ class ModelSaleOrder extends Model {
 
 		return $query->row['total'];
 	}
+
+	public function getPassportDetailsCustomer($order_id){
+        $sql = "SELECT birthdate, birthplace, passport_number, residence_address, passport_issue_date, passport_expiry_date, supporting_document_type, supporting_document, supporting_document_number, supporting_document_expiry_date, category, arrival_date FROM " . DB_PREFIX .
+            "order WHERE order_id = '" . (int)$order_id . "'";
+        return $this->db->query($sql)->row;
+    }
+
+    public function editOrderVisa($where, $data){
+        $sql = "UPDATE " . DB_PREFIX . "order SET 
+        firstname = '" . $this->db->escape($data['firstname']) . "', 
+        lastname = '" . $this->db->escape($data['lastname']) . "', 
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        birthdate = '" . $this->db->escape($data['birthdate']) . "',
+        WHERE order_id =  '" . (int)$where . "'";
+        return $this->db->query($sql);
+    }
 }

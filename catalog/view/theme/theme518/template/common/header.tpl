@@ -78,7 +78,9 @@
     <link rel="stylesheet" href="catalog/view/theme/theme518/stylesheet/lightpick.css" media="screen"/>
     <script src="catalog/view/javascript/moment.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/lightpick.js" type="text/javascript"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+
     <!--[if lt IE 9]>
     <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'>
         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img
@@ -93,46 +95,6 @@
 <!-- swipe menu -->
 <div class="swipe">
     <div class="swipe-menu">
-        <ul>
-
-            <li>
-                <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>"><i class="fa fa-user"></i>
-                    <span><?php echo $text_account; ?></span></a>
-            </li>
-            <?php if ($logged) { ?>
-            <li>
-                <a href="<?php echo $order; ?>"><i class="fa fa-file-text-o"></i><?php echo $text_order; ?></a>
-            </li>
-            <li>
-                <a href="<?php echo $transaction; ?>"><i class="fa fa-exchange"></i><?php echo $text_transaction; ?></a>
-            </li>
-            <li>
-                <a href="<?php echo $download; ?>"><i class="fa fa-download"></i><?php echo $text_download; ?></a>
-            </li>
-            <li>
-                <a href="<?php echo $logout; ?>"><i class="fa fa-unlock"></i><?php echo $text_logout; ?></a>
-            </li>
-            <?php } else { ?>
-            <li>
-                <a href="<?php echo $register; ?>"><i class="fa fa-user"></i> <?php echo $text_register; ?></a>
-            </li>
-            <li>
-                <a href="<?php echo $login; ?>"><i class="fa fa-lock"></i><?php echo $text_login; ?></a>
-            </li>
-            <?php } ?>
-            <li>
-                <a href="<?php echo $wishlist; ?>" id="wishlist-total2" title="<?php echo $text_wishlist; ?>"><i
-                        class="fa fa-heart"></i> <span><?php echo $text_wishlist; ?></span></a>
-            </li>
-            <li>
-                <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i
-                        class="fa fa-shopping-cart"></i> <span><?php echo $text_shopping_cart; ?></span></a>
-            </li>
-            <li>
-                <a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i>
-                    <span><?php echo $text_checkout; ?></span></a>
-            </li>
-        </ul>
         <?php if ($maintenance == 0){ ?>
         <ul class="foot">
             <?php if ($informations) { ?>
@@ -190,77 +152,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <nav id="top" class="top_panel">
-                        <div id="top-links" class="nav">
-                            <ul class="list-inline">
-                                <li class="first">
-                                    <a href="<?php echo $home; ?>"><i class="visible-sm fa fa-home"></i><span
-                                            class="hidden-sm"><?php echo $text_home; ?></span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $wishlist; ?>" id="wishlist-total"
-                                       title="<?php echo $text_wishlist; ?>"><i
-                                            class="visible-sm fa fa-heart"></i> <span
-                                            class="hidden-sm"><?php echo $text_wishlist; ?></span></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>"
-                                       class="dropdown-toggle" data-toggle="dropdown"><i
-                                            class="visible-sm fa fa-user"></i>
-                                        <span class="hidden-sm"><?php echo $text_account; ?></span> <span
-                                                class="caret hidden-sm"></span></a>
-                                    <ul class="dropdown-menu dropdown-menu-left">
-                                        <?php if ($logged) { ?>
-                                        <li>
-                                            <a href="<?php echo $account; ?>"><?php echo $text_account; ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo $order; ?>"><?php echo $text_order; ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo $download; ?>"><?php echo $text_download; ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a>
-                                        </li>
-                                        <?php } else { ?>
-                                        <li>
-                                            <a href="<?php echo $register; ?>"><?php echo $text_register; ?></a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a>
-                                        </li>
-                                        <?php } ?>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>">
-                                        <i class="visible-sm fa fa-shopping-cart"></i> <span
-                                            class="hidden-sm"><?php echo $text_shopping_cart; ?></span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i
-                                            class="visible-sm fa fa-share"></i> <span
-                                            class="hidden-sm"><?php echo $text_checkout; ?></span></a>
-                                </li>
-                            </ul>
-
-
-                            <?php echo $language; ?>
-                            <?php echo $currency; ?>
-                            <?php echo $search; ?>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
                     <div id="logo" class="logo">
                         <?php if ($logo) { ?>
                         <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
@@ -271,8 +162,6 @@
                         </h1>
                         <?php } ?>
                     </div>
-
-                    <?php echo $cart; ?>
                 </div>
             </div>
         </div>
