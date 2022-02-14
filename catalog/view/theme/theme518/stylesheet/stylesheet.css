@@ -4,11 +4,12 @@
 @import url(//fonts.googleapis.com/css?family=Pacifico);
 @import url(//fonts.googleapis.com/css?family=Ubuntu:300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /*========================================================
                       Main Styles
 =========================================================*/
 body {
-  font-family: 'Open Sans',serif;
+  font-family: 'Roboto',serif;
   /*font: 300 13px/18px "Ubuntu Condensed", sans-serif;*/
   color: #a5a8aa;
   background: #fff;

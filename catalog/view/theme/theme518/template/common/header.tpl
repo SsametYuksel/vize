@@ -45,7 +45,7 @@
     <link href="catalog/view/theme/theme518/stylesheet/photoswipe.css" rel="stylesheet">
     <link href="catalog/view/theme/theme518/js/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
 
-    <link href="catalog/view/theme/theme518/stylesheet/stylesheet.css" rel="stylesheet">
+    <link href="catalog/view/theme/theme518/stylesheet/stylesheet.css?ver=2" rel="stylesheet">
     <!--custom script-->
     <?php foreach ($scripts as $script) { ?>
     <script src="<?php echo $script; ?>" type="text/javascript"></script>
