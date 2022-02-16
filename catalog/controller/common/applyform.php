@@ -265,6 +265,9 @@ class ControllerCommonApplyform extends Controller {
                 $data['supporting_document_list'] = $supporting_document;
             }
 
+            $data['supporting_document_list'] = $this->model_catalog_category->getCategories(44);
+
+
             //3 tane session var.
 
             if (isset($this->session->data['name'])){
@@ -304,6 +307,15 @@ class ControllerCommonApplyform extends Controller {
             }
         }
         return $image_array;
+    }
+
+    public function getDocumentsBaseOnSupportingDocumentType()
+    {
+        $parent_id = $this->request->post['parent_id'];
+        $this->load->model('catalog/category');
+        $cats = $this->model_catalog_category->getCategories($parent_id);   
+        $this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($cats));
     }
 
 	public function getPassports()

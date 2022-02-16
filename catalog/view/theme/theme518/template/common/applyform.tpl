@@ -345,7 +345,7 @@
 
 							<?php foreach($supporting_document_list as $document) {
 
-								echo '<option value="'.$document['id'].'">'.$document['name'].'</option>';
+								echo '<option value="'.$document['category_id'].'">'.$document['name'].'</option>';
 
 							}?>
 
@@ -365,7 +365,7 @@
 
 					<div class="col-sm-7">
 
-						<select class="form-control" name="supporting_document" id="supporting_document_type" required>
+						<select class="form-control" name="supporting_document" id="docs" required>
 
 							<option disabled hidden selected value="">Please select a document first</option>
 
@@ -560,22 +560,27 @@
 <script>
 
 	$('#supporting_document_type').on('change', function () {
-
+		let parent_id = $('option:selected', this).val();
 		$.ajax({
 
-			url: 'index.php?route=common/ajax/getValues',
+			url: 'index.php?route=common/applyform/getDocumentsBaseOnSupportingDocumentType',
 
 			type: 'post',
 
 			data:{
 
-				id: $('#supporting_document_type').val(),
+				parent_id: parent_id,
 
 			},
 
-			success: function(response) {
-
-				console.log(response);
+			success: function(cats) {
+				$('#docs').empty()
+				cats.forEach(function(cat){
+					$('#docs').append($('<option>', {
+						value: cat.category_id,
+						text: cat.name,
+					}))
+				})
 
 			}
 
