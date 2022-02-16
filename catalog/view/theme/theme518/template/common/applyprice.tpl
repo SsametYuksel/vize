@@ -47,6 +47,7 @@
 		<?php echo $column_right; ?></div>
 
 		<form action="<?php echo $applyform_url?>" method="POST">
+		<input type="hidden" name="come-from-applyprice-form" value="1">
 
 		<div style="background-color: #f3f3f3; padding:40px; background-image: url(http://ferisoftdemo.com/vize/image/back.jpg);background-size: cover;" class="row">
 
