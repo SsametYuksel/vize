@@ -130,41 +130,41 @@
 
 				<?php if($category == 64 || $category == 65){ ?>
 
-				<!-- Photo -->
+						<!-- Photo -->
 
-				<div class="form-group row">
+						<div class="form-group row">
 
-					<label for="image" class="col-sm-5 col-form-label">Passport Photo</label>
+							<label for="image" class="col-sm-5 col-form-label">Passport Photo</label>
 
-					<div class="col-sm-7">
+							<div class="col-sm-7">
 
-						<input type="file" class="form-control" name="image[]" accept="image/*" multiple required>
+								<input type="file" class="form-control" name="image[]" accept="image/*" multiple required>
 
-					</div>
+							</div>
 
-				</div>
+						</div>
 
 
 
 				<?php if($supporting_document_needed){ ?>
 
-				<!-- Docs -->
+						<!-- Docs -->
 
-				<div class="form-group row">
+						<div class="form-group row">
 
-					<label for="image" class="col-sm-5 col-form-label">Supporting Documents</label>
+							<label for="image" class="col-sm-5 col-form-label">Supporting Documents</label>
 
-					<div class="col-sm-7">
+							<div class="col-sm-7">
 
-						<input type="file" class="form-control" name="docs[]" accept=".doc,.docx,
+								<input type="file" class="form-control" name="docs[]" accept=".doc,.docx,
 
-						application/msword,
+								application/msword,
 
-						application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" multiple required>
+								application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" multiple required>
 
-					</div>
+							</div>
 
-				</div>
+						</div>
 
 				<?php } ?>
 
@@ -558,6 +558,8 @@
 
 <script>
 
+var today = new Date();
+
 	var picker3 = new Lightpick({
 
 		field: document.getElementById('datepicker3'),
@@ -569,6 +571,7 @@
 		minDate: today,
 
 	});
+
 
 	$('#supporting_document_type').on('change', function () {
 		let parent_id = $('option:selected', this).val();
