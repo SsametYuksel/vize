@@ -151,17 +151,17 @@
 
 			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px;background-color: #f7f7f729;box-shadow: 0px 2px 11px 2px #00000047;">
 
-				<p>Nationality: <span id="nationality-confirm" style="font-weight: 600; color: black"> </span></p>
+				<p style="color: #d2d2d2">Nationality: <span id="nationality-confirm" style="font-weight: 600; color: #fff"> </span></p>
 
-				<p>Passport Type Allowance: <span style="font-weight: 600; color: black" id="passport-confirm"> </span></p>
+				<p style="color: #d2d2d2">Passport Type Allowance: <span style="font-weight: 600; color: #fff" id="passport-confirm"> </span></p>
 
-				<p>Max stay days: <span style="font-weight: 600; color: black" id="max-days-confirm"></span></p>
+				<p style="color: #d2d2d2">Max stay days: <span style="font-weight: 600; color: #fff" id="max-days-confirm"></span></p>
 
-				<p>Supporting Documents: <span style="font-weight: 600; color: black" id="supporting-docs-confirm"></span></p>
+				<p style="color: #d2d2d2">Supporting Documents: <span style="font-weight: 600; color: #fff" id="supporting-docs-confirm"></span></p>
 
-				<p>Extra Passport Note: <span style="font-weight: 600; color: black" id="extra-notes-confirm"></span></p>
+				<p style="color: #d2d2d2">Extra Passport Note: <span style="font-weight: 600; color: #fff" id="extra-notes-confirm"></span></p>
 
-				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: green; font-weight: 600; padding-left: 10px;"></span></h2>
+				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: #fff; font-weight: 600; padding-left: 10px;"></span></h2>
 
 			</div>
 

@@ -130,11 +130,11 @@
 
 				<?php if($category == 64 || $category == 65){ ?>
 
-						<!-- Photo -->
+						<!-- Photo 1 -->
 
 						<div class="form-group row">
 
-							<label for="image" class="col-sm-5 col-form-label">Passport Photo</label>
+							<label for="image" class="col-sm-5 col-form-label">Passport Photo 1</label>
 
 							<div class="col-sm-7">
 
@@ -143,7 +143,6 @@
 							</div>
 
 						</div>
-
 
 
 				<?php if($supporting_document_needed){ ?>
@@ -344,7 +343,7 @@
 
 							<?php foreach($supporting_document_list as $document) {
 
-								echo '<option value="'.$document['category_id'].'">'.$document['name'].'</option>';
+								echo '<option data-id="'.$document['category_id'].'" value="'.$document['name'].'">'.$document['name'].'</option>';
 
 							}?>
 
@@ -574,7 +573,7 @@ var today = new Date();
 
 
 	$('#supporting_document_type').on('change', function () {
-		let parent_id = $('option:selected', this).val();
+		let parent_id = $('option:selected', this).data('id');
 		$.ajax({
 
 			url: 'index.php?route=common/applyform/getDocumentsBaseOnSupportingDocumentType',
@@ -591,7 +590,7 @@ var today = new Date();
 				$('#docs').empty()
 				cats.forEach(function(cat){
 					$('#docs').append($('<option>', {
-						value: cat.category_id,
+						value: cat.name,
 						text: cat.name,
 					}))
 				})

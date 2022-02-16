@@ -210,13 +210,9 @@ class ControllerCommonApplyform extends Controller {
             $data['supporting_document_needed'] = $need_supporting_document["need_supporting_docs"];
 
             if (isset($need_supporting_document["need_supporting_docs"])) {
-                $supporting_document = $this->model_checkout_order->getSupportingDocumentTypes();
-
-                $this->session->data['supporting_document_list'] = $supporting_document;
-                $data['supporting_document_list'] = $supporting_document;
+                $data['supporting_document_list'] = $this->model_catalog_category->getCategories(44);
             }
 
-            $data['supporting_document_list'] = $this->model_catalog_category->getCategories(44);
 
 
             //3 tane session var.
