@@ -8,7 +8,6 @@ class ControllerCatalogCategory extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('catalog/category');
-
 		$this->getList();
 	}
 
@@ -533,28 +532,28 @@ class ControllerCatalogCategory extends Controller {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
 
-			if ((utf8_strlen($value['meta_title']) < 3) || (utf8_strlen($value['meta_title']) > 255)) {
-				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
-			}
+			// if ((utf8_strlen($value['meta_title']) < 3) || (utf8_strlen($value['meta_title']) > 255)) {
+			// 	$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
+			// }
 		}
 
-		if (utf8_strlen($this->request->post['keyword']) > 0) {
-			$this->load->model('catalog/url_alias');
+		// if (utf8_strlen($this->request->post['keyword']) > 0) {
+		// 	$this->load->model('catalog/url_alias');
 
-			$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
+		// 	$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
 		
-			if ($url_alias_info && isset($this->request->get['category_id']) && $url_alias_info['query'] != 'category_id=' . $this->request->get['category_id']) {
-				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-			}
+		// 	if ($url_alias_info && isset($this->request->get['category_id']) && $url_alias_info['query'] != 'category_id=' . $this->request->get['category_id']) {
+		// 		$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+		// 	}
 
-			if ($url_alias_info && !isset($this->request->get['category_id'])) {
-				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-			}
+		// 	if ($url_alias_info && !isset($this->request->get['category_id'])) {
+		// 		$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+		// 	}
 
-			if ($this->error && !isset($this->error['warning'])) {
-				$this->error['warning'] = $this->language->get('error_warning');
-			}
-		}
+		// 	if ($this->error && !isset($this->error['warning'])) {
+		// 		$this->error['warning'] = $this->language->get('error_warning');
+		// 	}
+		// }
 
 		return !$this->error;
 	}
