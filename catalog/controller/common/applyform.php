@@ -284,13 +284,13 @@ class ControllerCommonApplyform extends Controller {
 	    $imageAndDocs = array();
         if(isset($this->session->data['upload_image'])){
             $folder_name = $this->session->data['folder_order_id'] = $this->request->post['name'];
-            if(!is_dir( DIR_UPLOAD.'/'. $folder_name)){
-                mkdir(DIR_UPLOAD.'/'.$folder_name, 0744);
+            if(!is_dir( DIR_IMAGE.'/docs/'. $folder_name)){
+                mkdir(DIR_IMAGE.'/docs/'.$folder_name, 0744);
             }
             $data["upload_image"] = $this->session->data['upload_image'];
             foreach($this->session->data['upload_image'] as $key => $move_image){
                 $errorimages[$key] = rename(DIR_UPLOAD_TEMP.$this->session->data['upload_image'][$key]['new_file_name'],
-                    DIR_UPLOAD.'/'.$folder_name.'/'.$this->session->data['image_names'][$key]);
+                    DIR_IMAGE.'/docs/'.$folder_name.'/'.$this->session->data['image_names'][$key]);
             }
         }
 
@@ -298,13 +298,13 @@ class ControllerCommonApplyform extends Controller {
             if(!isset($folder_name)){
                 $folder_name = $this->session->data['folder_order_id'] = $this->request->post['name'];
             }
-            if(!is_dir( DIR_UPLOAD.'/'. $folder_name)){
-                mkdir(DIR_UPLOAD.'/'.$folder_name, 0744);
+            if(!is_dir( DIR_IMAGE.'/docs/'. $folder_name)){
+                mkdir(DIR_IMAGE.'/docs/'.$folder_name, 0744);
             }
             $data["upload_docs"] = $this->session->data['upload_docs'];
             foreach($this->session->data['upload_docs'] as $key => $move_docs){
                 $errorDocs[$key] = rename(DIR_UPLOAD_TEMP.$this->session->data['upload_docs'][$key]['new_file_name'],
-                    DIR_UPLOAD
+                    DIR_IMAGE
                     .'/'
                     .$folder_name.'/'.$this->session->data['docs_names'][$key]);
             }

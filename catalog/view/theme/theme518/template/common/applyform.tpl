@@ -134,7 +134,7 @@
 
 						<div class="form-group row">
 
-							<label for="image" class="col-sm-5 col-form-label">Passport Photo 1</label>
+							<label for="image" class="col-sm-5 col-form-label">Passport Photo </label>
 
 							<div class="col-sm-7">
 
@@ -155,7 +155,7 @@
 
 							<div class="col-sm-7">
 
-								<input type="file" class="form-control" name="docs[]" accept=".doc,.docx,
+								<input type="file" class="form-control" name="docs[]" accept=".doc,image/*,.docx,
 
 								application/msword,
 
@@ -742,7 +742,6 @@ $(document).ready(function() {
 		format: 'MM/DD/YYYY',
 
 		repick: true,
-
 		maxDate: today
 
 	});
