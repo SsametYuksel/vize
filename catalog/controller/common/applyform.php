@@ -1,31 +1,10 @@
 <?php
 class ControllerCommonApplyform extends Controller {
 	public function index() {
-	    // if(!(isset($this->session->data['product_type']) || isset($this->session->data['name']) ||
-        //     isset($this->request->files['image']) || isset($this->session->data['image_names']) || isset
-        //     ($this->request->post['name']))){
-        //     $this->response->redirect($this->url->link('common/applyform'));
-        // }
 
-//        echo '<pre>', print_r($this->session->data['product_type']), '</pre>';
-//	    echo '<br>';
-//	    echo '<br>';
-//	    echo '<br>';
-//        echo '<pre>', print_r($this->session->data['name']), '</pre>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<pre>', print_r($this->request->files['image']), '</pre>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<pre>', print_r($this->session->data['image_names']), '</pre>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<br>';
-//        echo '<pre>', print_r($this->request->post['name']), '</pre>';
-//
-//        exit;
+        if($this->request->post['come-from-applyprice-form'] != '1'){
+            $this->response->redirect($this->url->link('common/home'));
+        }
 
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
@@ -48,19 +27,9 @@ class ControllerCommonApplyform extends Controller {
 		// Load Product model
 		$this->load->model('catalog/product');
         $this->load->model('checkout/order');
-//		$data['nationalities'] = $this->model_catalog_product->getProducts();
 
-		//$data['passports'] = $this->model_catalog_product->getProductOptions(56)[0]['product_option_value'];
-		
-		// print_r($data['nationalities']); exit;
-		// print_r($data['passports'][0]); exit;
 
 		if(isset($this->request->post['type']) && $this->request->post['type'] == 'confirmed'){
-
-		    //upload image içinde dosyaların adı yok.
-            //$this->session->data['tmp_name'][$key] olarak yazdım.
-            //$upload_image içinde dosyanın konumu var. [file_location] onu kullanabilirim taşımak için.
-            //$upload_image içindeki code ile de dosyaları database'den çekip rename ile başka yere taşıyabiliriz.
 
             $this->addOrder();
 
@@ -114,13 +83,6 @@ class ControllerCommonApplyform extends Controller {
                     $data['image_names'][$key] = $image_name['name'];
                     $this->session->data['image_names'][$key] = $image_name['name'];
                 }
-
-//                echo '<pre>', print_r($data['upload_image']), '</pre>';
-//                echo '<br>';
-//                echo '<br>';
-//                echo '<br>';
-//                echo '<pre>', print_r($data['image_names']), '</pre>';
-//                exit;
 
                 //check if there are any errors on upload
                 foreach ($this->session->data['upload_image'] as $key => $check_fail){
@@ -202,17 +164,6 @@ class ControllerCommonApplyform extends Controller {
                     $this->session->data['supporting_document_expiry_date'] = $data['supporting_document_expiry_date'] = $this->request->post['supporting_document_expiry_date'];//
                 }
             }
-
-
-//			$option = $this->model_catalog_product->getProductOptions($this->session->data['nationality_id'])[0];
-//
-//			$this->session->data['product_option_id'] = $option['product_option_id'];
-//			$passports = $option['product_option_value'];
-//			$option = $this->session->data['option'] = array_values(array_filter($passports, function($passport){
-//				return $passport['product_option_value_id'] == $this->session->data['passport_id'];
-//			}))[0];
-//
-//			$data['passport'] = $option['name'];
 
 
 			$data['return_back'] = $this->url->link('common/applyform');
@@ -364,18 +315,6 @@ class ControllerCommonApplyform extends Controller {
         }
 
         if(isset($errorimages) && isset($errorDocs)){
-//            $zero = count($errorimages);
-//
-//            echo '<pre>', print_r(range($zero+1, count($errorDocs))), '</pre>';
-//            echo '<pre>', print_r(array_values($errorDocs)), '</pre>';
-//            echo '<pre>', print_r(array_combine(range($zero+1, count($errorDocs)), array_values($errorDocs))), '</pre>';
-//            exit;
-//
-//            $errorDocsReplace = array_combine(range($zero+1, count($errorDocs)), array_values($errorDocs));
-//            $imageAndDocs = ;
-//            for ($key=0;$key<(count($errorimages)+count($errorDocs));$i++){
-//                $imageAndDocs[$key] = $
-//            }
             return array_merge($errorimages, $errorDocs);
         }elseif(isset($this->session->data['upload_image'])){
             return $errorimages;
@@ -500,115 +439,7 @@ class ControllerCommonApplyform extends Controller {
             $this->response->redirect($this->url->link('common/applyform'));
         }
 
-//		$order_data['customer_id'] = 0;
-//		$order_data['customer_group_id'] = 1;
-//		$order_data['firstname'] = $this->session->data['name'];
-//		$order_data['lastname'] = $this->session->data['surname'];
-//		$order_data['email'] = $this->session->data['email'];
-//		$order_data['telephone'] = $this->session->data['phone'];
-//		$order_data['fax'] = '';
-//		$order_data['store_name'] = '';
-//		$order_data['store_id'] = '1';
-//		$order_data['store_url'] = '';
-//		$order_data['payment_firstname'] = $this->session->data['name'];
-//		$order_data['payment_lastname'] = $this->session->data['surname'];
-//		$order_data['payment_company'] = '';
-//		$order_data['payment_address'] = $this->session->data['residence_address'];
-//		$order_data['payment_address_1'] = '';
-//		$order_data['payment_address_2'] = '';
-//		$order_data['payment_city'] = '';
-//		$order_data['payment_postcode'] = '';
-//		$order_data['payment_country'] = '';
-//		$order_data['payment_country_id'] = $this->session->data['nationality_id'];
-//		$order_data['payment_zone'] = '';
-//		$order_data['payment_zone_id'] = '';
-//		$order_data['payment_address_format'] = '';
-//		$order_data['payment_method'] = '';
-//		$order_data['payment_code'] = '';
-//
-//		$order_data['shipping_firstname'] = $this->session->data['name'];
-//		$order_data['shipping_lastname'] = $this->session->data['surname'];
-//		$order_data['shipping_company'] = '';
-//		$order_data['shipping_method'] = '';
-//		$order_data['shipping_address_1'] = '';
-//		$order_data['shipping_address_2'] = '';
-//		$order_data['shipping_address_format'] = '';
-//		$order_data['shipping_city'] = '';
-//		$order_data['shipping_postcode'] = '';
-//		$order_data['shipping_country'] = '';
-//		$order_data['shipping_country_id'] = '';
-//		$order_data['shipping_zone'] = '';
-//		$order_data['shipping_zone_id'] = '';
-//		$order_data['shipping_code'] = '';
-//		$order_data['shipping_code'] = '';
-//
-//		$order_data['comment'] = '';
-//
-//		$order_data['tax_class_id'] = '';
-//		$order_data['invoice_prefix'] = '';
-//
-//		$option = $this->session->data['option'];
-//		$order_data['total'] = $option['price'];
-//
-//		$order_data['affiliate_id'] = '';
-//		$order_data['commission'] = '';
-//		$order_data['marketing_id'] = '';
-//		$order_data['tracking'] = '';
-//
-//		$order_data['language_id'] = '1';
-//		$order_data['currency_id'] = $this->currency->getId();
-//		$order_data['currency_code'] = $this->currency->getCode();
-//		$order_data['currency_value'] = $this->currency->getValue($this->currency->getCode());
-//
-//		$order_data['ip'] = '';
-//		$order_data['forwarded_ip'] = '';
-//		$order_data['user_agent'] = '';
-//		$order_data['accept_language'] = '';
-//
-//
-//
-//		$option_data[] = array(
-//			'product_option_id'       => $this->session->data['product_option_id'],
-//			'product_option_value_id' => $option['product_option_value_id'],
-//			'option_id'               => 15,
-//			'option_value_id'         => $option['option_value_id'],
-//			'name'                    => $option['name'],
-//			'value'                   => $option['price'],
-//			'type'                    => ''
-//		);
-//
-//		$product_id = $this->session->data['nationality_id'];
-//		$product = $this->model_catalog_product->getProduct($product_id);
-//		$product = array(
-//			'product_id' => $product_id,
-//			'name'       => $product['name'],
-//			'model'      => '',
-//			'option'     => $option_data,
-//			'download'   => '',
-//			'quantity'   => 1,
-//			'subtract'   => '',
-//			'price'      => $option['price'],
-//			'total'      => $option['price'],
-//			'tax'        => '',
-//			'reward'     => ''
-//		);
-//
-//		$order_data['products'][] = array(
-//			'product_id' => $product['product_id'],
-//			'name'       => $product['name'],
-//			'model'      => $product['model'],
-//			'option'     => $option_data,
-//			'download'   => $product['download'],
-//			'quantity'   => $product['quantity'],
-//			'subtract'   => $product['subtract'],
-//			'price'      => $product['price'],
-//			'total'      => $product['total'],
-//			'tax'        => '',
-//			'reward'     => $product['reward']
-//		);
 
-		// $this->load->model('extension/extension');
-		// $results = $this->model_extension_extension->getExtensions('total');
 	}
 
 	public function uploadPhoto(){

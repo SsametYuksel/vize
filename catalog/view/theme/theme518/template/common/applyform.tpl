@@ -124,6 +124,7 @@
 			<form method="POST" enctype="multipart/form-data">
 
 				<input type="hidden" name="type" value="confirm">
+				<input type="hidden" name="come-from-applyprice-form" value="1">
 
 
 
@@ -169,7 +170,7 @@
 
 				<?php }else{ ?>
 
-
+	
 
 				<!-- name -->
 
@@ -179,13 +180,11 @@
 
 					<div class="col-sm-7">
 
-						<input type="text" class="form-control" name="name" <?php if(isset($name)){echo "value=$name";} ?> required>
+						<input type="text" class="form-control" name="name" value="name" <?php if(isset($name)){echo "value=$name";} ?> required>
 
 					</div>
 
 				</div>
-
-
 
 				<!-- Surname -->
 
@@ -195,7 +194,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="text" class="form-control" name="surname" <?php if(isset($surname)){echo "value=$surname";} ?> required>
+						<input type="text" class="form-control" name="surname" value="surname" <?php if(isset($surname)){echo "value=$surname";} ?> required>
 
 					</div>
 
@@ -241,7 +240,7 @@
 
 					<div class="col-sm-7">
 
-						<input name="birthplace" type="text" class="form-control" <?php if(isset($birthplace)){echo "value=$birthplace";} ?> required>
+						<input name="birthplace" value="Birth Place"  type="text" class="form-control" <?php if(isset($birthplace)){echo "value=$birthplace";} ?> required>
 
 					</div>
 
@@ -257,7 +256,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="text" class="form-control" name="passport_number" <?php if(isset($passport_number)){echo "value=$passport_number";} ?> required>
+						<input type="text" value="123456789" class="form-control" name="passport_number" <?php if(isset($passport_number)){echo "value=$passport_number";} ?> required>
 
 					</div>
 
@@ -435,7 +434,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="email" class="form-control" name="email" <?php if(isset($email)){echo "value=$email";} ?> required>
+						<input type="email" value="test@gmail.com" class="form-control" name="email" <?php if(isset($email)){echo "value=$email";} ?> required>
 
 					</div>
 
@@ -451,7 +450,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="email" class="form-control" name="confirm_email" required>
+						<input type="email" value="test@gmail.com" class="form-control" name="confirm_email" required>
 
 					</div>
 
@@ -467,7 +466,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="text" class="form-control" name="phone" <?php if(isset($phone)){echo "value=$phone";} ?> required>
+						<input type="text" value="123456789" class="form-control" name="phone" <?php if(isset($phone)){echo "value=$phone";} ?> required>
 
 					</div>
 
@@ -483,7 +482,7 @@
 
 					<div class="col-sm-7">
 
-						<input type="text" class="form-control" name="residence_address" <?php if(isset($residence_address)){echo "value=$residence_address";} ?> required>
+						<input type="text" value="address" class="form-control" name="residence_address" <?php if(isset($residence_address)){echo "value=$residence_address";} ?> required>
 
 					</div>
 
@@ -558,6 +557,18 @@
 <?php if(!($category == 64 || $category == 65)){ ?>
 
 <script>
+
+	var picker3 = new Lightpick({
+
+		field: document.getElementById('datepicker3'),
+
+		format: 'MM/DD/YYYY',
+
+		repick: true,
+
+		minDate: today,
+
+	});
 
 	$('#supporting_document_type').on('change', function () {
 		let parent_id = $('option:selected', this).val();
@@ -750,6 +761,8 @@ $(document).ready(function() {
 
 	});
 
+
+
 	<?php if(isset($passport_issue_date)){echo '$("#datepicker1").val("'.$passport_issue_date.'");';} ?>
 
 
@@ -827,6 +840,19 @@ $(document).ready(function() {
 	$(".countryselect").countrySelect();
 
 });
+
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
 </script>
 

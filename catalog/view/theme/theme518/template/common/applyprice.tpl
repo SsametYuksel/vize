@@ -48,7 +48,7 @@
 
 		<form action="<?php echo $applyform_url?>" method="POST">
 
-		<div style="background-color: #f3f3f3;" class="row">
+		<div style="background-color: #f3f3f3; padding:40px; background-image: url(http://ferisoftdemo.com/vize/image/back.jpg);background-size: cover;" class="row">
 
 			<div style="padding-top: 13px;" class="col col-md-6">
 
@@ -58,7 +58,7 @@
 
 				<div class="form-group" style="max-width: 300px;  margin: auto; position: relative">
 
-					<label for="">Nationality</label>
+					<label for="" class="price-form">Nationality</label>
 
 					<select id="nationality" class="form-control" name="nationality_id" id="">
 
@@ -80,7 +80,7 @@
 
 				<div class="form-group" style="max-width: 300px;  margin: auto">
 
-					<label for="">Passport Type</label>
+					<label for="" class="price-form">Passport Type</label>
 
 					<select required class="form-control" name="passport_id" id="">
 
@@ -96,7 +96,7 @@
 
 				<div class="form-group" style="max-width: 300px;  margin: auto">
 
-					<label for="">Arrival Date</label>
+					<label for="" class="price-form">Arrival Date</label>
 
 					<div class='input-group date'>
 
@@ -120,11 +120,11 @@
 
 					<input type="radio" class="form-check-input insurance" name="insurance" value="0" checked>
 
-					<label for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
+					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
 
-					<input type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
+					<input class="price-form" type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
 
-					<label for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
+					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
 
 				</div>
 
@@ -134,7 +134,7 @@
 
 				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
 
-					<label id="modal_link" style="margin-right: 5px"  data-toggle="modal" 
+					<label class="price-form" id="modal_link" style="margin-right: 5px"  data-toggle="modal" 
 
 						   data-target="#exampleModal">Click here 
 
@@ -148,7 +148,7 @@
 
 
 
-			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px; background-color: #f7f7f7">
+			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px;background-color: #f7f7f729;box-shadow: 0px 2px 11px 2px #00000047;">
 
 				<p>Nationality: <span id="nationality-confirm" style="font-weight: 600; color: black"> </span></p>
 

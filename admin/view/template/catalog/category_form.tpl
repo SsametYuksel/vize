@@ -112,6 +112,8 @@
                   </div>
                 </div>
               </div> -->
+
+              <input style="display: none" type="checkbox" name="category_store[]" value="0" checked="checked">
               <!-- <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
                 <div class="col-sm-10">

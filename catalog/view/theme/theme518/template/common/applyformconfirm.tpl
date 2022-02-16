@@ -40,9 +40,21 @@
 		<?php } ?>
 		<div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?></div>
 		<?php echo $column_right; ?></div>
-		<div class="container" style="max-width: 600px">
+		<style>
+			#confirm-wrapper {
+				max-width: 600px;
+				border: 1px solid #b5b5b5;
+				border-radius: 10px;
+				padding: 30px;
+				box-shadow: 1px 1px 10px #e1e1e1;
+			}
+		
+		</style>
+		<div id="confirm-wrapper" class="container">
             <form method="POST">
+
             <input type="hidden" name="type" value="confirmed"> </input> 
+            <input type="hidden" name="come-from-applyprice-form" value="1"> </input> 
 			<div class="text-center">
 				<h2 class="text-dark">Please examine again and Confirm the data</h2>
 				<p>If something is wrong return back and revise</p>
