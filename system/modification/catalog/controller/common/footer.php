@@ -43,6 +43,7 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
+		$data['name'] = $this->config->get('config_name');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['about'] = $this->url->link('information/information&information_id=4');
 		$data['return'] = $this->url->link('account/return/add', '', 'SSL');

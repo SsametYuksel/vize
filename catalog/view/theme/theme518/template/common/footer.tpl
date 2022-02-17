@@ -51,8 +51,8 @@
          
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="footer_box">
-                    <h5 data-equal-group="5"><?php echo $title; ?></h5>
-                    <a href="<?php echo $home; ?>"><img style="width: 50%" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
+                    <h5 data-equal-group="5"><?php echo $name; ?></h5>
+                    <a href="<?php echo $home; ?>"><img style="width: 100px" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
                                     alt="<?php echo $name; ?>" class="img-responsive"/></a>
                 </div>
             </div>
