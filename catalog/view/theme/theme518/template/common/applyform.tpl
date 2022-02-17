@@ -134,7 +134,7 @@
 
 						<div class="form-group row">
 
-							<label for="image" class="col-sm-5 col-form-label">Passport Photo </label>
+							<label for="image" class="col-sm-5 col-form-label">Upload Documents </label>
 
 							<div class="col-sm-7">
 
@@ -144,28 +144,6 @@
 
 						</div>
 
-
-				<?php if($supporting_document_needed){ ?>
-
-						<!-- Docs -->
-
-						<div class="form-group row">
-
-							<label for="image" class="col-sm-5 col-form-label">Supporting Documents</label>
-
-							<div class="col-sm-7">
-
-								<input type="file" class="form-control" name="docs[]" accept=".doc,image/*,.docx,
-
-								application/msword,
-
-								application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" multiple required>
-
-							</div>
-
-						</div>
-
-				<?php } ?>
 
 				<?php }else{ ?>
 

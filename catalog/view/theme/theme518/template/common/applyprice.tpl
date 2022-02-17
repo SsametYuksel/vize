@@ -124,9 +124,11 @@
 
 					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
 
+
 					<input class="price-form" type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
 
 					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
+
 
 				</div>
 
@@ -391,19 +393,10 @@ var updatePriceWhenNationalitySelect = () => {
 
 
 $(".insurance").change(function() {
+	
 
-	if($(this).val() != 0) {
-
-		var currentPrice = parseInt($('#price').text().replace('$', ''));
-
-		currentPrice += 10;
-
-		$('#price').text('$'+currentPrice.toFixed(2));
-
-		$('#insurance').val(1);
-
-	}else{
-
+	if($(this).val() == 0) {
+		
 		var currentPrice = parseInt($('#price').text().replace('$', ''));
 
 		currentPrice -= 10;
@@ -411,8 +404,21 @@ $(".insurance").change(function() {
 		$('#price').text('$'+currentPrice.toFixed(2));
 
 		$('#insurance').val(0);
+	console.log('remove')
+		return;
+
 
 	}
+	
+	console.log('add')
+	var currentPrice = parseInt($('#price').text().replace('$', ''));
+
+	currentPrice += 10;
+
+	$('#price').text('$'+currentPrice.toFixed(2));
+
+	$('#insurance').val(1);
+
 
 });
 
