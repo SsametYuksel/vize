@@ -2,6 +2,38 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="footer_box">
+                    <h5 data-equal-group="5">About Us</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="<?php echo $about; ?>">About us</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="footer_box">
+                    <h5 data-equal-group="5">Apply Now</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="<?php echo $apply_standard; ?>">Apply Standard</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $apply_easy; ?>">Apply Easy</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $apply_standard_quick; ?>">Apply Standard (Quick)</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $apply_easy_quick; ?>">Apply Easy (Quick)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
                 <?php if ($informations) { ?>
                 <div class="footer_box">
                     <h5 data-equal-group="5"><?php echo $text_information; ?></h5>
@@ -15,58 +47,13 @@
                 </div>
                 <?php } ?>
             </div>
+        
+         
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="footer_box">
-                    <h5 data-equal-group="5"><?php echo $text_service; ?></h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $return; ?>"><?php echo $text_return; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="footer_box">
-                    <h5 data-equal-group="5"><?php echo $text_extra; ?></h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $affiliate; ?>"><?php echo $text_affiliate; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $special; ?>"><?php echo $text_special; ?></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="footer_box">
-                    <h5 data-equal-group="5"><?php echo $text_account; ?></h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="<?php echo $account; ?>"><?php echo $text_account; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $order; ?>"><?php echo $text_order; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a>
-                        </li>
-                    </ul>
+                    <h5 data-equal-group="5"><?php echo $title; ?></h5>
+                    <a href="<?php echo $home; ?>"><img style="width: 50%" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
+                                    alt="<?php echo $name; ?>" class="img-responsive"/></a>
                 </div>
             </div>
             <div class="clear"></div>

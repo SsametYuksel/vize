@@ -44,6 +44,7 @@ class ControllerCommonFooter extends Controller {
 		}
 
 		$data['contact'] = $this->url->link('information/contact');
+		$data['about'] = $this->url->link('information/information&information_id=4');
 		$data['return'] = $this->url->link('account/return/add', '', 'SSL');
 		$data['sitemap'] = $this->url->link('information/sitemap');
 		$data['manufacturer'] = $this->url->link('product/manufacturer');
@@ -54,6 +55,27 @@ class ControllerCommonFooter extends Controller {
 		$data['order'] = $this->url->link('account/order', '', 'SSL');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
+		$data['home'] = $this->url->link('common/home');
+		$data['title'] = $this->document->getTitle();
+
+		if ($this->request->server['HTTPS']) {
+			$server = $this->config->get('config_ssl');
+		} else {
+			$server = $this->config->get('config_url');
+		}
+
+		
+		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
+			$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+		} else {
+			$data['logo'] = '';
+		}
+		
+		// Apply standard and Easy links
+		$data['apply_standard'] = $this->url->link('common/applyprice&type=62', '', 'SSL');
+		$data['apply_easy'] = $this->url->link('common/applyprice&type=64', '', 'SSL');
+		$data['apply_standard_quick'] = $this->url->link('common/applyprice&type=63', '', 'SSL');
+		$data['apply_easy_quick'] = $this->url->link('common/applyprice&type=65', '', 'SSL');
  
 			$data['address'] = nl2br($this->config->get('config_address'));
 			$data['telephone'] = $this->config->get('config_telephone');

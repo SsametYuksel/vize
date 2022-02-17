@@ -16,7 +16,7 @@
 				$_['text_rss']   = 'RSS';
 				$_['text_yt']   = 'YouTube';
 				
-$_['text_information']	= 'Informationen';
+$_['text_information']	= 'Know more';
 $_['text_service']		= 'Kundendienst';
 $_['text_extra']		= 'Extras';
 $_['text_contact']		= 'Kontakt';

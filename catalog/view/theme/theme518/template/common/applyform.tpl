@@ -521,7 +521,7 @@
 
 				<div class="text-center" style="margin-top: 10px">
 
-					<button name="" id="next_part" style="font-size: 28px" class="btn btn-primary" type="submit">Save & Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+					<button name="" id="next_part" style="font-size: 20px" class="btn btn-primary" type="submit">Save & Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 
 				</div>
 

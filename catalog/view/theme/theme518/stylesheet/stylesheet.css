@@ -58,6 +58,7 @@ body {
   padding: 0 10px;
   color: #141414;
   font-weight: 500;
+  line-height: 40px;
 }
 
 .justify-content-between {

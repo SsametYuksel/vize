@@ -302,53 +302,54 @@
 
         <div class="container">
 
-            <div class="row d-flex justify-content-between align-items-center">
-                <div class="d-flex" style="align-items: flex-end">
-                
-                              <div id="logo" class="logo d-inline-block">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="d-flex" style="align-items: flex-end">
+                        <div id="logo" class="logo d-inline-block">
 
-                        <?php if ($logo) { ?>
+                            <?php if ($logo) { ?>
 
-                        <a href="<?php echo $home; ?>"><img width="60" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
+                            <a href="<?php echo $home; ?>"><img width="60" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
 
-                                                            alt="<?php echo $name; ?>" class="img-responsive"/></a>
+                                                                alt="<?php echo $name; ?>" class="img-responsive"/></a>
 
-                        <?php } else { ?>
+                            <?php } else { ?>
 
-                        <h1>
-                            <a href="<?php echo $home; ?>"><?php echo $name; ?></a>
+                            <h1>
+                                <a href="<?php echo $home; ?>"><?php echo $name; ?></a>
 
-                        </h1>
+                            </h1>
 
-                        <?php } ?>
-                    </div>
-
-                        <div >
-                             <h3 style="margin: 0" class="fw-bold text-dark">E-Visa For Turkey</h3>
-                            <p class="text-secondary">Electronic Visa Application System</p>
+                            <?php } ?>
                         </div>
 
+                            <div >
+                                <h3 style="margin: 0" class="fw-bold text-dark">E-Visa For Turkey</h3>
+                                <p class="text-secondary">Electronic Visa Application System</p>
+                            </div>
+                    </div>
+                </div>                    
+                <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 20px;">
 
-         
-                
+                            <ul id="menu" class="list-unstyled d-flex">
+                                                     <li class="btn btn-primary" style="padding: 10px; margin: 0 10px; line-height: 20px">
+                                <a href="<?php echo $home ?>">Apply Now</a>
+                            </li>
+                                                 <li >
+                                <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=6">Fees</a>
+                            </li>
+                            
+                                                    <li>
+                                <a href="<?php echo $contact?>">Contact Us</a>
+                            </li>
+                                    <li>
+                                <a href="<?php echo $about?>">About Us</a>
+                            </li>
+                               
+                           
+                                </ul>
                 </div>
-
-                        <ul id="menu" class="list-unstyled d-flex">
-                                <li>
-                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=4">About Us</a>
-                        </li>
-                                                <li>
-                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=6">Delivery Information</a>
-                        </li>
-                                                <li>
-                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=3">Privacy Policy</a>
-                        </li>
-                                                <li>
-                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=5">Terms &amp; Conditions</a>
-                        </li>
-                                            </ul>
-   </div>
-        </div>
+            </div>
 
 
 
@@ -412,7 +413,8 @@
 
 
 
-    <?php if ($categories) { ?>
+    <?php if (
+        $categories) { ?>
 
     <div class="container">
 

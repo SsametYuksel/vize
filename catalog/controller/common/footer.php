@@ -43,6 +43,16 @@ class ControllerCommonFooter extends Controller {
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
 
+
+		// Apply standard and Easy links
+		echo 'dsadas'; exit;
+		$data['apply_standard'] = $this->url->link('common/applyprice&type=62', '', 'SSL');
+		$data['apply_easy'] = $this->url->link('common/applyprice&type=64', '', 'SSL');
+		$data['apply_standard_quick'] = $this->url->link('common/applyprice&type=63', '', 'SSL');
+		$data['apply_easy_quick'] = $this->url->link('common/applyprice&type=65', '', 'SSL');
+
+
+
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
 		// Whos Online
