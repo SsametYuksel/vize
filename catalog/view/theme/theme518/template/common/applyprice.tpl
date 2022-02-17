@@ -47,7 +47,7 @@
 
 		<?php echo $column_right; ?></div>
 
-		<form action="<?php echo $applyform_url?>" method="POST">
+		<form id="form" action="<?php echo $applyform_url?>" method="POST">
 		<input type="hidden" name="come-from-applyprice-form" value="1">
 
 		<div style="background-color: #efefef; padding:40px" class="row">
@@ -150,6 +150,7 @@
 					<img width="200" src="index.php?route=tool/captcha" alt="" style="margin-bottom: 10px">
 					<p style="font-size: 12px">Enter the code in the box below </p> 
 					<input type="text" name="captcha" id="input-captcha" class="form-control" style="width: 200px; margin: auto">
+					<p id="error-captcha" class="text-danger text-small">the security code is incorrect!</p>
 				</div>
 			</div>
 
@@ -517,6 +518,7 @@ var findSelectedNationality = () => {
 }
 
 $(document).ready(function() {
+	$('#error-captcha').hide()
 
 	initializeNationalityConfirm();
 
@@ -550,6 +552,28 @@ $(document).ready(function() {
 
 });   
 
+$( "button[type=submit]" ).on('click', function( event ) {
+  event.preventDefault();
+  $('#error-captcha').hide()
+
+	let captcha = $('#input-captcha').val();
+	$.ajax({
+		url: 'index.php?route=common/applyprice/validateCaptcha',
+		type: 'post',
+		data:{
+			captcha: captcha,
+		},
+		success: function(response) {
+			console.log(response)
+			if(response == "true"){
+				$("form").submit()
+			}else{
+				$('#error-captcha').show()
+			}
+		},
+	});
+
+});
 </script>
 
 <?php echo $footer; ?>

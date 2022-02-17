@@ -76,4 +76,17 @@ class ControllerCommonApplyprice extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($passports));
 	}
+
+
+	public function validateCaptcha()
+	{
+		$response = 'false';
+		if(isset($this->session->data['captcha']) &&
+		 isset($this->request->post['captcha']) &&
+		$this->session->data['captcha'] == $this->request->post['captcha']){
+			$response = "true";
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($response));
+	}
 }

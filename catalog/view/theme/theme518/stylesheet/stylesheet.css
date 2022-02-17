@@ -47,6 +47,14 @@ body {
   color: #4d4d4d;
 }
 
+.d-none {
+  display: none;
+}
+
+.text-small {
+  font-size: 12px !important;
+}
+
 .d-flex {
   display: flex;
 }
