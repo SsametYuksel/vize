@@ -302,34 +302,52 @@
 
         <div class="container">
 
-            <div class="row">
-
-                <div class="col-sm-12">
-
-                    <div id="logo" class="logo">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="d-flex" style="align-items: flex-end">
+                
+                              <div id="logo" class="logo d-inline-block">
 
                         <?php if ($logo) { ?>
 
-                        <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
+                        <a href="<?php echo $home; ?>"><img width="60" src="<?php echo $logo; ?>" title="<?php echo $name; ?>"
 
                                                             alt="<?php echo $name; ?>" class="img-responsive"/></a>
 
                         <?php } else { ?>
 
                         <h1>
-
                             <a href="<?php echo $home; ?>"><?php echo $name; ?></a>
 
                         </h1>
 
                         <?php } ?>
-
                     </div>
 
+                        <div >
+                             <h3 style="margin: 0" class="fw-bold text-dark">E-Visa For Turkey</h3>
+                            <p class="text-secondary">Electronic Visa Application System</p>
+                        </div>
+
+
+         
+                
                 </div>
 
-            </div>
-
+                        <ul id="menu" class="list-unstyled d-flex">
+                                <li>
+                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=4">About Us</a>
+                        </li>
+                                                <li>
+                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=6">Delivery Information</a>
+                        </li>
+                                                <li>
+                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=3">Privacy Policy</a>
+                        </li>
+                                                <li>
+                            <a href="http://ferisoftdemo.com/vize/index.php?route=information/information&amp;information_id=5">Terms &amp; Conditions</a>
+                        </li>
+                                            </ul>
+   </div>
         </div>
 
 
@@ -360,7 +378,7 @@
 
 
 
-                <ul class="social-list">
+                <!-- <ul class="social-list">
 
                     <li>
 
@@ -380,7 +398,7 @@
 
                     </li>
 
-                </ul>
+                </ul> -->
 
 
 

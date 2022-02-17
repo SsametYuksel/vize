@@ -31,7 +31,42 @@ body {
 }
 
 
+.d-inline-block{
+  display: inline-block;
+}
 
+.text-dark {
+  color: #313131;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+.text-secondary {
+  color: #4d4d4d;
+}
+
+.d-flex {
+  display: flex;
+}
+
+#menu {
+  text-align: right;
+}
+#menu li{
+  padding: 0 10px;
+  color: #141414;
+  font-weight: 500;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
 h1,
 
 h2,
@@ -341,12 +376,18 @@ div.required .control-label:before {
 
 .header {
 
-  background: #fff;
+  background: linear-gradient(90deg, rgb(243, 243, 243), rgb(230, 230, 230));
 
   border-bottom: 1px solid #e1e2e2;
 
   padding: 9px 0 6px;
 
+  border-bottom: 2px solid #bfbfbf;
+
+}
+
+.camera_container {
+  margin-top: 0px;
 }
 
 .header .box-currency,
