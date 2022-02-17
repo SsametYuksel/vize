@@ -1715,8 +1715,12 @@ div.required .control-label:before {
 
   .header {
 
-    padding-top: 60px;
+    padding-top: 0px;
 
+  }
+
+  #menu {
+    justify-content: center;
   }
 
   .header .search {
@@ -3987,13 +3991,15 @@ footer {
 
   border-top: 1px solid #e8e8e8;
 
-  padding: 64px 0 44px;
+  padding: 40px 0 20px;
 
   text-transform: uppercase;
 
   letter-spacing: 0.96px;
 
   font-size: 12px;
+
+  background:linear-gradient(#f0f0f0, #e3e3e3);;
 
 }
 
@@ -4028,6 +4034,10 @@ footer .footer_box ul li + li {
 }
 
 
+footer li {
+  color: dimgray;
+}
+
 
 .copyright br {
 
@@ -4039,7 +4049,7 @@ footer .footer_box ul li + li {
 
 .copyright {
 
-  margin-top: 130px;
+  margin-top: 40px;
 
 }
 

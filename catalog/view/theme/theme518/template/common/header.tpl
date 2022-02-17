@@ -290,7 +290,7 @@
 
     <div class="shadow"></div>
 
-    <div class="toprow-1">
+    <div class="toprow-1" style="display: none">
 
         <a class="swipe-control" href="#"><i class="fa fa-align-justify"></i></a>
 
