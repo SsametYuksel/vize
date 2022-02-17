@@ -152,13 +152,13 @@
 
     <!--Lightpick-->
 
-    <link rel="stylesheet" href="catalog/view/theme/theme518/stylesheet/lightpick.css" media="screen"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightpick@1.6.2/css/lightpick.css" media="screen"/>
 
     <script src="catalog/view/javascript/moment.js" type="text/javascript"></script>
 
-    <script src="catalog/view/javascript/lightpick.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.6.2/lightpick.js" type="text/javascript"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    
 
 
 
