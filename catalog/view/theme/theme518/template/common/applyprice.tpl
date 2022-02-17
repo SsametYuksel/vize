@@ -50,7 +50,7 @@
 		<form action="<?php echo $applyform_url?>" method="POST">
 		<input type="hidden" name="come-from-applyprice-form" value="1">
 
-		<div style="background-color: #d8d8d8; padding:40px" class="row">
+		<div style="background-color: #efefef; padding:40px" class="row">
 
 			<div style="padding-top: 13px;" class="col col-md-6">
 
@@ -120,12 +120,11 @@
 
 				<div class="form-group form-inline" style="display:flex; max-width: 300px;  margin: auto">
 
-					<input type="radio" class="form-check-input insurance" name="insurance" value="0" checked>
+					<input type="radio" class="form-check-input insurance" name="insurance" value="0">
 
 					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">Without Insurance</label>
-
-
-					<input class="price-form" type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
+					
+					<input class="price-form" checked type="radio" class="form-check-input insurance" name="insurance" value="1" style="margin-left: 10px;">
 
 					<label class="price-form" for="checkBox" style="margin: 0; margin-left: 5px; ">With Insurance ($10)</label>
 
@@ -158,7 +157,7 @@
 
 				<p style="color: #515151">Passport Type Allowance: <span style="font-weight: 600; color: #434343" id="passport-confirm"> </span></p>
 
-				<p style="color: #515151">Max stay days: <span style="font-weight: 600; color: #434343" id="max-days-confirm"></span></p>
+				<p style="color: #515151">Max stay days: <span style="font-weight: 600; color: #434343" id="max-days-confirm">90 days in 180</span></p>
 
 				<!-- <p style="color: #515151">Supporting Documents: <span style="font-weight: 600; color: #434343" id="supporting-docs-confirm"></span></p> -->
 
@@ -351,6 +350,10 @@ var updatePriceWhenNationalitySelect = () => {
 			pass_type = $('option:selected', '#nationality').data('pass_type') //pass_type
 
 			max_stay_days = $('option:selected', '#nationality').data('max_stay_days') //max_stay_days
+			max_days_in = max_stay_days.split('/')[0]
+			max_days = max_stay_days.split('/')[1]
+
+			max_stay_days = max_days + ' days every ' + max_days_in + ' days'
 
 			supporting_docs = $('option:selected', '#nationality').data('supporting_docs') //supporting_docs
 
@@ -362,9 +365,9 @@ var updatePriceWhenNationalitySelect = () => {
 
 			$('#nationality-confirm').text(country)
 
-			$('#passport-confirm').text(pass_type)
+			$('#passport-confirm').text(pass_type.toUpperCase())
 
-			$('#max-days-confirm').text(max_stay_days)
+			$('#max-days-confirm').text(max_stay_days.toUpperCase())
 
 			if ($('option:selected', '#nationality').data('extra_note').length === 0)
 
@@ -392,11 +395,20 @@ var updatePriceWhenNationalitySelect = () => {
 
 
 
-$(".insurance").change(function() {
-	
+$("input[type=radio][name=insurance]").change(function() {
 
-	if($(this).val() == 0) {
-		
+	if($(this).val() != 0) {
+
+		var currentPrice = parseInt($('#price').text().replace('$', ''));
+
+		currentPrice += 10;
+
+		$('#price').text('$'+currentPrice.toFixed(2));
+
+		$('#insurance').val(1);
+
+	}else{
+
 		var currentPrice = parseInt($('#price').text().replace('$', ''));
 
 		currentPrice -= 10;
@@ -404,21 +416,8 @@ $(".insurance").change(function() {
 		$('#price').text('$'+currentPrice.toFixed(2));
 
 		$('#insurance').val(0);
-	console.log('remove')
-		return;
-
 
 	}
-	
-	console.log('add')
-	var currentPrice = parseInt($('#price').text().replace('$', ''));
-
-	currentPrice += 10;
-
-	$('#price').text('$'+currentPrice.toFixed(2));
-
-	$('#insurance').val(1);
-
 
 });
 
@@ -453,20 +452,24 @@ var initializeNationalityConfirm = () => {
 		pass_type = $('option:selected', '#nationality').data('pass_type') //pass_type
 
 		max_stay_days = $('option:selected', '#nationality').data('max_stay_days') //max_stay_days
+		max_days_in = max_stay_days.split('/')[0]
+		max_days = max_stay_days.split('/')[1]
+
+		max_stay_days = max_days + ' days every ' + max_days_in + ' days'
 
 		supporting_docs = $('option:selected', '#nationality').data('supporting_docs') //supporting_docs
 
 		extra_note = $('option:selected', '#nationality').data('extra_note') //extra_note
 
 		price = $('option:selected', '#nationality').data('price')
-
+	
 		$('#price').text(' ' + price).toggleClass('active')
 
 		$('#nationality-confirm').text(country)
 
-		$('#passport-confirm').text(pass_type)
+		$('#passport-confirm').text(pass_type.toUpperCase())
 
-		$('#max-days-confirm').text(max_stay_days)
+		$('#max-days-confirm').text(max_stay_days.toUpperCase())
 
 		if ($('option:selected', '#nationality').data('extra_note').length == 0)
 
@@ -504,29 +507,11 @@ var initializePassportConfirm = () => {
 
 
 
-var initializePrice = () => {
-
-
-
-	price = $('option:selected', '#passport').attr('price')
-
-	$('#price').text(price)
-
-}
-
-
-
 var findSelectedNationality = () => {
 
 	return $('#nationality').find(":selected").val();
 
 }
-
-
-
-
-
-
 
 $(document).ready(function() {
 

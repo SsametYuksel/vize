@@ -31,15 +31,17 @@ class ControllerCommonApplyprice extends Controller {
 		$this->load->model('catalog/product');
 
 		$data['nationalities'] = $this->model_catalog_product->getProducts();
+		$insurance= 10; 
 
-		$data['nationalities'] = array_map(function($item){
+		$data['nationalities'] = array_map(function($item) use ($insurance){
 			$prices = $this->model_catalog_product->getProductOptions($item['product_id'])[0]['prices'];
-			$prices = array_filter($prices, function($item){
+			$prices = array_filter($prices, function($item) {
 				return $item['option_value_id'] == $_GET['type'];
 			});
 			$prices = array_values($prices);
 			if(count($prices)){
-				$item['price'] = $this->currency->format($prices[0]['price']);
+				$price = $prices[0]['price'] + $insurance;
+				$item['price'] = $this->currency->format($price);
 			}
 
 			return $item;

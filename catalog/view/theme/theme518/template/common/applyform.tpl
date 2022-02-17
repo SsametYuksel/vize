@@ -145,6 +145,66 @@
 						</div>
 
 
+
+
+				<div class="form-group form-inline">
+
+					<label class="price-form" id="modal_link" style="margin-right: 5px"  data-toggle="modal" 
+
+						   data-target="#exampleModal">Click here 
+
+						for information regarding required documents</label>
+
+				</div>
+
+
+						
+	<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content">
+
+				<div class="modal-header" style="display: flex; justify-content: space-between; padding: 5px 15px;">
+
+					<h2 style="margin: 20px 0 20px;">Passenger Locator Form</h2>
+
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+						<span aria-hidden="true">X</span>
+
+					</button>
+
+				</div>
+
+				<div class="modal-body">
+
+					<p style="color: black; font: ">Form for entry to Turkey</p>
+
+					<ol style="color: black" type="1">
+
+						<li>The form must be filled within last 72 hours before travel</li>
+
+						<li>The information must be proper and correct because in case of any contact with Covid-19 patient, The Ministry of Health will contact you.</li>
+
+						<li>The form may be checked at the borders and if you have not filled or given misleading statements, you may face legal and administrative sanctions.</li>
+
+						<li>If you have not filled it, you might be refused to enter Turkey.</li>
+
+					</ol>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+						
+
+
 				<?php }else{ ?>
 
 	
