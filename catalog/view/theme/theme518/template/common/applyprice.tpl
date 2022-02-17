@@ -145,11 +145,13 @@
 
 				</div>
 
-
-
+				<br>
+				<div class="form-group form-inline text-center" style="max-width: 300px;  margin: auto">
+					<img width="200" src="index.php?route=tool/captcha" alt="" style="margin-bottom: 10px">
+					<p style="font-size: 12px">Enter the code in the box below </p> 
+					<input type="text" name="captcha" id="input-captcha" class="form-control" style="width: 200px; margin: auto">
+				</div>
 			</div>
-
-
 
 			<div class="col col-md-6" style="border-radius: 5px; vertical-align: center; padding: 50px 20px;background-color: #fdfdfd;box-shadow: 0px 2px 11px 2px #00000047;">
 
@@ -173,8 +175,9 @@
 
 		</div>
 
-		<div class="text-center" style="margin-top: 100px">
-
+		<div class="text-center" style="margin-top: 50px; text-align: center">
+		
+			<br>
 			<button type="submit" name="" id="" style="font-size: 28px" class="btn btn-primary" href="#" role="button">Save & Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 
 		</div>

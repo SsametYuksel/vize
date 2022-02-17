@@ -51,6 +51,10 @@ body {
   display: flex;
 }
 
+.text-center {
+  text-align: center;
+}
+
 #menu {
   text-align: right;
 }
