@@ -12,6 +12,7 @@
 
 
 
+
 </style>
 
 
@@ -49,7 +50,7 @@
 		<form action="<?php echo $applyform_url?>" method="POST">
 		<input type="hidden" name="come-from-applyprice-form" value="1">
 
-		<div style="background-color: #f3f3f3; padding:40px; background-image: url(http://ferisoftdemo.com/vize/image/back.jpg);background-size: cover;" class="row">
+		<div style="background-color: #d8d8d8; padding:40px" class="row">
 
 			<div style="padding-top: 13px;" class="col col-md-6">
 
@@ -149,19 +150,19 @@
 
 
 
-			<div class="col col-md-6" style="vertical-align: center; padding: 50px 20px;background-color: #f7f7f729;box-shadow: 0px 2px 11px 2px #00000047;">
+			<div class="col col-md-6" style="border-radius: 5px; vertical-align: center; padding: 50px 20px;background-color: #fdfdfd;box-shadow: 0px 2px 11px 2px #00000047;">
 
-				<p style="color: #d2d2d2">Nationality: <span id="nationality-confirm" style="font-weight: 600; color: #fff"> </span></p>
+				<p style="color: #515151">Nationality: <span id="nationality-confirm" style="font-weight: 600; color: #434343"> </span></p>
 
-				<p style="color: #d2d2d2">Passport Type Allowance: <span style="font-weight: 600; color: #fff" id="passport-confirm"> </span></p>
+				<p style="color: #515151">Passport Type Allowance: <span style="font-weight: 600; color: #434343" id="passport-confirm"> </span></p>
 
-				<p style="color: #d2d2d2">Max stay days: <span style="font-weight: 600; color: #fff" id="max-days-confirm"></span></p>
+				<p style="color: #515151">Max stay days: <span style="font-weight: 600; color: #434343" id="max-days-confirm"></span></p>
 
-				<p style="color: #d2d2d2">Supporting Documents: <span style="font-weight: 600; color: #fff" id="supporting-docs-confirm"></span></p>
+				<!-- <p style="color: #515151">Supporting Documents: <span style="font-weight: 600; color: #434343" id="supporting-docs-confirm"></span></p> -->
 
-				<p style="color: #d2d2d2">Extra Passport Note: <span style="font-weight: 600; color: #fff" id="extra-notes-confirm"></span></p>
+				<p style="color: #515151">Extra Passport Note: <span style="font-weight: 600; color: #434343" id="extra-notes-confirm"></span></p>
 
-				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: #fff; font-weight: 600; padding-left: 10px;"></span></h2>
+				<h2 style="font-size: 40px; margin-top: 20px; position: relative;">Visa Fee:<span id="price" style="color: #008408; font-weight: 600; padding-left: 10px;"></span></h2>
 
 			</div>
 

@@ -267,12 +267,11 @@ input[type="color"].form-control {
   font-size: 12px;
 
   border-radius: 20px;
-  border: none;
 
 }
 
 #applyform{
-      background-color: #ffffff69!important;
+      background-color: #ffffffda!important;
 }
 
 .input-group input,
@@ -3811,7 +3810,9 @@ input.btn.btn-primary:hover {
 
 }
 
-
+.price-form{
+  color: #575757 !important
+}
 
 .btn:hover,
 

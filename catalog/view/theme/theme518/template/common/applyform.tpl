@@ -64,7 +64,7 @@
 
 	#container {
 
-		background-image: url('http://ferisoftdemo.com/vize/image/back.jpg');
+		background-image: url('http://ferisoftdemo.com/vize/image/applyform1.jpg');
 
 		background-size: cover;
 
@@ -79,7 +79,7 @@
 		background-color: #ffffffe6;
 
 		border-radius: 10px;
-
+		box-shadow: 1px 1px 10px #f2f2f2;
 
 		padding: 4%;
 
@@ -115,7 +115,7 @@
 
 				<h2 class="text-dark">Please fill the following form</h2>
 
-				<p style="color:#fff;">Make sure to fill all input correct</p>
+				<p style="color:#3e3e3e;">Make sure to fill all input correct</p>
 
 				<br>
 

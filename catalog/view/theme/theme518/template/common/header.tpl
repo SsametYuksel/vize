@@ -92,7 +92,7 @@
 
 
 
-    <link href="catalog/view/theme/theme518/stylesheet/stylesheet.css?ver=15" rel="stylesheet">
+    <link href="catalog/view/theme/theme518/stylesheet/stylesheet.css?ver=<?php echo rand()?>" rel="stylesheet">
 
     <!--custom script-->
 
